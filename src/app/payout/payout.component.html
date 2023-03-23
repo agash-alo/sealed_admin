@@ -1,0 +1,73 @@
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex="100" >
+  <div class="container-fluid p-2 ">
+    <div class=" row-wrap">
+      <div class="col-12 p-0">
+        <mat-card>
+          <mat-card-content class="payoutcard">
+              <div class="">
+                <div class="  my-3">
+                  <h6 class="heading  mb-2">Cash payout done
+                    <span class="badge badge-light violet">10</span>
+                  </h6>
+                  <div class=" my-2">
+                    <button mat-raised-button color="primary" class="exportreport">Export Report</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6 col-md-6 col-lg-4 mb-3"  *ngFor="let items of payout_list">
+                    <div class="">
+                    <mat-card class="m-0" >
+                    <mat-card-content class="innercard">
+                          <div class="  ">
+                            <div class="row my-1 ">
+                              <div class="col-12">
+                                <div>
+                                  <p> Name :{{items.Name}}</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row my-1 ">
+                              <div class="col-6 ">
+                                <div>
+                                  <p> Date :{{items.Date }}</p>
+                                </div>
+                              </div>
+                              <div class="col-6">
+                                <div>
+                                  <p> Time :{{items.Time }}</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row my-1 ">
+                              <div class="col-6">
+                                <div>
+                                  <p> Amount :₹ {{items.Amount }}</p>
+                                </div>
+                              </div>
+                              <div class="col-6">
+                                <div>
+                                  <p> Status :{{items.Status }}</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="text-center my-2">
+                              <button mat-raised-button class="view" (click)="courierpayout_view()">View</button>
+                            </div>
+                          </div>
+                    </mat-card-content>
+                    </mat-card>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+          </mat-card-content>
+        </mat-card>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</div>

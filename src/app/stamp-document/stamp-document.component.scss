@@ -1,0 +1,52 @@
+// ::ng-deep.mat-flat-button.mat-primary, .mat-raised-button.mat-primary, .mat-radio-button.mat-primary .mat-radio-inner-circle {
+//     background-color:#fff !important;
+//     color: #000 !important;
+// }
+// ::ng-deep.mat-badge-medium.mat-badge-overlap.mat-badge-before .mat-badge-content {
+//      left: 0px;
+// }
+// ::ng-deep.mat-badge-medium.mat-badge-before .mat-badge-content {
+//     left: 0px; 
+// }
+
+// ::ng-deep.mat-badge-medium.mat-badge-above .mat-badge-content {
+//     top: 0px; 
+// }
+// ::ng-deep.mat-badge-medium .mat-badge-content {
+//     width: 30px;
+//     height: 34px;
+//     line-height: 36px;
+// }
+// ::ng-deep.mat-badge-content.mat-badge-active {
+//      transform: none;
+// }
+// ::ng-deep.mat-badge-accent .mat-badge-content {
+//     background: #21aa47;
+//     color: white;
+// }
+.buttons {
+    border-radius: 5px;
+    width: 100%;
+    padding: 0px 0px 0px 6px;
+    font-weight: 600;
+    font-size: 14px;
+    background: #fff;
+    align-items: center;
+position: relative;
+    
+  }
+
+   .badge {
+    float: right;
+   
+    padding: 7px 10px;
+    
+    top: 0px;
+    border-radius: 5px ;
+    background: #21aa47;
+    color: #fff;
+  }
+  .btn:focus {
+    outline: 0;
+     box-shadow:none !important;
+}

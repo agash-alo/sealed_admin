@@ -1,0 +1,91 @@
+
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex="100">
+      <div class="container-fluid p-3">
+        <div class="row-wrap px-3">
+          <div class="col-sm-6 col-md-3 col-lg-3 customerbtn">
+            <div classs>
+              <button type="button" class="btn buttons">
+                <span class="customer">B2B Customers</span> <span class="badge badge-light float-right violet">20</span>
+              </button>
+            </div>
+      
+          </div>
+        </div>
+        <div class="row p-3">
+          <mat-card class="m-0">
+            <mat-card-header class="">
+                <div class="cardheader ">
+                  <div class="search-container">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class=" d-flex">
+                          <div class=" searchone">
+                            <div class="input-group ">
+                              <input type="text" placeholder="Search Customers" class="form-control">
+                              <div class="input-group-append">
+                                <button class="btn btnsearch">
+                                  <i class="fas fa-search text-white"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="">
+                  <div class="row p-0">
+                    <div class="col-sm-6 col-md-6 col-lg-4 mb-4  " *ngFor="let items of customer_list">
+                        <mat-card class="m-0">
+                          
+                          <mat-card-content class="customerscard p-0">
+                            
+                              <div class="row-wrap d-flex ">
+                                <div class="col-sm-6"></div>
+                                <div class="col-sm-6 ">
+                                  <div class="status" style="background: #FF0C0C;">
+                                    <span>Unverified</span>
+                                  </div>
+                            
+                                </div>
+                              </div>
+                              
+                            
+                                <div class="p-4">
+                                  <h4 class="heading">{{items.name}}</h4>
+                                  <h4 class="heading">{{items.mobile_no}}</h4>
+                                  <h4 class="heading">{{items.email}}</h4>
+                                  <h4 class="heading">{{items.gst_no}}</h4>
+                                      <div class="text-center mt-2">
+                                        <button mat-raised-button color="primary" class="green"> VERIFY </button>
+                                      </div>
+                                </div>
+                                
+                                
+                          </mat-card-content>
+                        </mat-card>
+
+                      
+                    </div>
+                
+                
+                
+                
+                
+                
+                  </div>
+                </div>
+            </mat-card-content>
+          </mat-card>
+          
+          
+      
+        </div>
+      </div>
+
+  </div>
+</div>

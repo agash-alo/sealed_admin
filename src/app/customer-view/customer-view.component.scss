@@ -1,0 +1,83 @@
+.heading{
+       font-size: 15px;
+       line-height: 28px;
+    font-weight: 700;
+    color: #000;
+
+}
+.header{
+    font-size: 14px !important;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.green{
+    background: #21AA47;
+    border-radius: 5px;
+    color: #FFFFFF;
+    border: none;
+    // padding: 0px 21px;
+    font-size: 14px;
+}
+
+.trip{
+    background: #F5F5F5;
+    box-shadow: 0px 2px 4px #21AA47;
+    border-radius: 5px;
+    border: none;
+}
+span{
+    margin-bottom: 0px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 28px;
+}
+
+h6{
+    
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.tripheader{
+    font-weight: 600;
+    font-size: 14px;
+}
+.blue {
+    background:#4348CF;
+    /* width:80%; */
+    // border-radius: 8px;
+    color: white;
+ 
+    border: none;
+    font-size: 13px;
+}
+
+.mat-raised-button{
+    line-height: 28px !important;
+    padding: 0px 14px !important;
+
+}
+@media (max-width:768px){
+    /* .col-md-6{
+        width: 100%;
+    } */
+    /* .col-8{
+        width: 100%;
+    } */
+    .blue{
+        width: 58%;
+        font-size: 13px;
+        padding: 2px 4px;
+    }
+    /* .timedate{
+        width: 60%;
+    } */
+    /* .activetrip{
+        width: 100%;
+    }
+    .completetrip{
+        width: 100%;
+    } */
+}

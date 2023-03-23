@@ -1,0 +1,81 @@
+button{
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 28px;
+}
+.payoutcard{
+    background: #fff;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 10px;
+    border: none;
+}
+.heading {
+    font-size: 14px;
+    font-weight: 800;
+    margin: 0px;
+    line-height: 28px !important;
+}
+
+.violet {
+    background: #4348cf;
+    border-radius: 5px;
+    color: #fff;
+}
+.badge {
+    display: inline-block;
+    padding: 0.35em 0.45em;
+    font-size: 13px;
+    font-weight: 600;
+    // line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 5px;
+}
+.exportreport{
+    background: #21aa47;
+    border: none;
+    // padding: 3px 20px;
+    border-radius: 8px;
+    color: white;
+
+}
+p{
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0px;
+}
+.innercard {
+    background: #f4f4f4;
+    border: none;
+    background: #F4F4F4;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 10px;
+}
+.view{
+
+    background: #4348CF;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    // padding: 3px 20px;
+
+}
+@media screen and (max-width:768px){
+    h6{
+        font-size: 12px;
+        font-weight: 600;
+        margin: 0px;
+
+    }
+    .heading {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0px;
+}
+button{
+    font-size: 12px;
+    font-weight: 500;
+}
+}

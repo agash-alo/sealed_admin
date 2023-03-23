@@ -1,0 +1,210 @@
+<div fxLayout="row wrap">
+  <div fxFlex="100">
+    <!-- <div class="container mt-4">
+  <div class="row p-2">
+    <h5 class="heading">SEARCH</h5>
+<mat-card>
+  <mat-card-content>
+<div class="" style="border-radius:10px ;">
+  <form>
+    <div class="row">
+      <label for="text" class="text">ENTER TRIP ID</label>
+
+      <div class="col-md-6 col-lg-4 col-sm-12 mt-2">
+        <input type="text mt-2" class="form-control">
+      </div>
+      <div class="col-md-6 col-lg-3 col-sm-12">
+        <button type="button" class=" btn-clr text mt-2">SEARCH ID</button>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <label for="text" class="text">ENTER TRIP DATE RANGE</label>
+
+      <div class="col-md-6 col-lg-4 col-sm-12 mt-2 ">
+        <input type="date" class="form-control">
+      </div>
+      <div class="col-md-6 col-lg-4 col-sm-12 mt-2 ">
+        <input type="date" class="form-control">
+      </div>
+      <div class="col-md-6 col-lg-3 col-sm-12 ">
+        <button type="button" class=" btn-clr text mt-2 ">SEARCH DATE</button>
+      </div>
+
+
+      
+    </div>
+
+
+  </form>
+</div>
+
+  </mat-card-content>
+</mat-card>
+   
+  </div>
+</div> -->
+    <ng-container>
+      <mat-card>
+        <mat-card-content>
+
+          <div class="row">
+           
+              <div class="">
+
+                <mat-label>ENTER TRIP ID</mat-label>
+                <div class="row">
+                  <div class="  col-md-6 col-lg-3 col-sm-12 mt-2">
+                    <!-- <mat-form-field>
+                      <input matInput placeholder="">
+                    </mat-form-field> -->
+                    <input type=" text" placeholder="" class="form-control">
+                  </div>
+                  <div class="  col-md-6 col-lg-3 col-sm-12 ">
+                    <div class="searchbtn my-2">
+                      <button mat-raised-button color="primary">Search ID</button>
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            
+          </div>
+          <!-- <div class="row">
+            <div class="col-9">
+              <div class="row">
+                <div class="col-4">
+                  <mat-label>ENTER TRIP DATE RANGE</mat-label>
+                </div>
+
+
+
+                <div class="row">
+                  <div class="col-4">
+                    <mat-form-field>
+
+                      <input matInput [matDatepicker]="picker1" placeholder="" [formControl]="">
+
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-4">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker2" placeholder="" [formControl]="">
+
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-3">
+                    <div class="searchbtn mt-1">
+                      <button mat-raised-button mat-flat-button color="primary">SEARCH DATE</button>
+
+                    </div>
+                  </div>
+                  <div class="col-2">
+
+                  </div>
+                </div>
+
+
+
+              </div>
+
+            </div>
+          </div> -->
+          <div class="row my-3">
+            <label for="text" class="text">ENTER TRIP DATE RANGE</label>
+          
+            <div class="col-md-6 col-lg-3 col-sm-12 mt-2 ">
+              <input type="date" class="form-control">
+            </div>
+            <div class="col-md-6 col-lg-3 col-sm-12 mt-2 ">
+              <input type="date" class="form-control">
+            </div>
+            <div class="col-md-6 col-lg-3 col-sm-12 ">
+              <div class="searchbtn my-2">
+                <button mat-raised-button color="primary">SEARCH DATE</button>
+          
+              </div>
+            </div>
+          </div>
+
+          <div class="ng-container" style="background: #F4F4F4">
+            <div class="col p-2">
+              <mat-card *ngFor="let items of trip_list">
+                <mat-card-content class="p-3">
+
+                  <div class="row d-flex text-center justify-center">
+                    <div class="col-2 ">
+                      <div class="txt">
+
+                        <p>{{items.date}}</p>
+                      </div>
+                    </div>
+                    <div class="col-2 ">
+                      <div class="txt">
+
+                        <p>{{items.delivery_type}}</p>
+                      </div>
+                    </div>
+                    <div class="col-1 ">
+                      <div class="txt">
+
+                        <p>{{items.package}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-2 ">
+                      <div class="txt">
+
+                        <p>{{items.courier_assign}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-2 ">
+                      <div class="txt">
+
+                        <p>{{items.trip_status}}</p>
+                      </div>
+                    </div>
+
+                    <div class="col-1 ">
+                      <div class="txt">
+
+                        <p>{{items.payment}}</p>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="txt">
+
+                        <div class="detail ">
+                          <button mat-raised-button color="primary" class="detailbtn">Details</button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </mat-card-content>
+              </mat-card>
+
+              
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+
+    </ng-container>
+  </div>
+</div>
+
+<mat-card>
+  <mat-card-content>
+    
+  </mat-card-content>
+</mat-card>

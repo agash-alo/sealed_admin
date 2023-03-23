@@ -1,0 +1,111 @@
+
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex="100">
+      <!-- <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-4 col-md-4 col-lg-2 mt-5">
+            <div class="card card-settings">
+      
+              <ul class="list-group  mb-5" style="padding: 12px 0px 0px 11px !important;border-radius: 0px;">
+                <li class="list-group-item list-text">Banner Management</li>
+                <li class="list-group-item list-text">Trip charges</li>
+      
+              </ul>
+      
+            </div>
+      
+          </div>
+          <div class="col-sm-8 col-md-8 col-lg-10 mt-5">
+            <div class="card card-settings ">
+      
+              <div class="row mb-5 p-3 g-4">
+                <div class="col-sm-6 col-md-6 col-lg-4">
+      
+                  <div class="shadow">
+                    <img src="assets\images\settings-banner.png" class="card-img-top img-fluid p-3" alt="img">
+                    <div class="card-body text-center">
+                      <a href="#" class="btn enable-btn">Enabled</a>
+                      <a href="#" class="btn remove-btn ms-3">Remove</a>
+                    </div>
+                  </div>
+      
+                </div>
+                
+      
+              </div>
+      
+      
+      
+      
+            </div>
+      
+          </div>
+      
+        </div>
+      </div> -->
+<mat-card>
+  <mat-card-content>
+      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+        <mat-tab label="Banner Management">
+          <mat-card>
+
+          
+          <mat-card-content>
+                <div class="container">
+                  <div class="row">
+                    
+                    
+                    <div class="col-4" *ngFor="let items of banner_management">
+                    
+                      <div class=" card-settings mb-3">
+                        <div class="col-sm-12">
+                    
+                          <div class="shadow">
+                            <img src="{{items.image}}" class="card-img-top img-fluid p-3" alt="img">
+                            <div class="card-body text-center">
+                              <a href="#" class="btn enable-btn">Enabled</a>
+                              <a href="#" class="btn remove-btn ms-3">Remove</a>
+                            </div>
+                          </div>
+                    
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4" >
+                    
+                      <div class=" card-settings mb-3">
+                        <div class="col-sm-12">
+                    
+                          <div class="shadow text-center">
+                            <img src="../../assets/images/custm-nbb/upload.png" class=" p-5" alt="img">
+                            <div class="card-body text-center">
+                              <a href="#" class="btn enable-btn">upload</a>
+                              <!-- <a href="#" class="btn remove-btn ms-3">upload</a> -->
+                            </div>
+                          </div>
+                    
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+          </mat-card-content>
+          </mat-card>
+         
+          
+       
+
+
+        </mat-tab>
+        <mat-tab label="Trip charges">Content 2</mat-tab>
+      
+      </mat-tab-group>
+  </mat-card-content>
+</mat-card>
+
+      
+  </div>
+</div>
+
+

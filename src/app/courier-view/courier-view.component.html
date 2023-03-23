@@ -1,0 +1,285 @@
+<div fxLayout="row wrap">
+  <div fxFlex.gt-sm="100" fxFlex="100" style="overflow:hidden;">
+
+    <!-- <div class="container mt-3">
+        <div class="row ">
+          <span><i class="fa fa-arrow-left" aria-hidden="true" (click)="returntocourier()"></i></span>
+        </div>
+      </div> -->
+
+    <div class="container-fluid ">
+
+      <div class="row ">
+        <div class="px-3 pt-3">
+          <h5><b>Details</b></h5>
+
+        </div>
+
+
+        <div class="col-lg-8 mt-3">
+
+          <mat-card class="m-0">
+            <mat-card-content class="p-0">
+              <div class="card-header p-0">
+
+                <div class="row">
+
+
+                  <div class="col-6">
+                    <div class="unverify">
+                      <span class="text-center">{{status}}</span>
+                    </div>
+                  </div>
+                  <div class="col-6"></div>
+                </div>
+              </div>
+              <div class="card-body p-0">
+                <div class="p-3">
+
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <p>{{courierdetails?.name}}</p>
+                    <p><b>Status:</b> {{status}}</p>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                      <div class="button">
+                        <button mat-raised-button color="primary" (click)="verifystatus()" [ngClass]="{'green' : toggle, 'red': !toggle}">{{status}}</button>
+                        
+                      </div>
+                    </div>
+                    <div class="col-6"></div>
+                  </div>
+
+
+                  <div class="row mt-4">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                      <p> <b>Contact number</b><br>+91 {{courierdetails?.mobileNo}}</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                      <p><b>Email address</b><br>{{courierdetails?.email}}</p>
+                    </div>
+                  </div>
+
+                  <div class="row mt-3">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                      <p><b>Address</b><br>
+                        <span *ngFor="let items of courierdetails?.addressDetails">
+                        
+                        {{items.address.fullAddress}} , {{items.address.street}} , {{items.address.city}}<br> {{items.address.state}}
+                        {{items.address.country}} , {{items.address.postalCode}}.<br>
+                        </span>
+                        </p>
+                    </div>
+                    <div class="col-6"></div>
+                  </div>
+
+                  <div class="row mt-3">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                      <p>Trips<br>
+                        <button mat-raised-button type="button" class=" btn_trips mt-2">Search all Trips</button>
+                      </p>
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6 mt-3">
+                      <p>Active Trips<br>
+                        <button mat-raised-button type="button" class=" btn_active mt-2">Load Activate Trips</button>
+                      </p>
+                    
+                      <mat-card class="m-0" >
+                        <mat-card-content class="p-0">
+                          <div class=" card_active mt-3">
+                            <div class=" p-2">
+                              <p class="text-center cashondelivery" >
+                                <!-- {{items.createdAt |date:'medium'}} -->
+                                25.1.2023 10:15:27 654321</p>
+                              <div class="col-lg-7 col-md-12 col-sm-12 mt-2">
+                                <p><b>ONE-WAY TRIP</b></p>
+                              </div>
+                              <div class="col-5"></div>
+
+                              <div class="row">
+
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                  <div class="card card_bg p-2">
+                                    <p> Time: 10:15:27 am<br>Date: 26.1.2023</p>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                              <div class="row mt-2">
+
+                                <P>Trip Distance: 5km</P>
+                                <div class="col-sm-6 col-md-6 col-lg-6 mt-2">
+                                  <div class="card card_bg p-1">
+                                    <p style="font-size:10px">FROM<br>
+                                    <!-- <span *ngFor="let aa of items.address">
+                                      {{aa.addressType}}
+                                    </span> -->
+                                    15-6, 15-6, Waddels Rd,
+                                    Davidpuram, Kilpauk,
+                                    Chennai, Tamil Nadu
+                                    600084,
+                                    
+                                      </p>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 mt-2">
+                                  <div class="card card_bg p-1">
+                                    <p style="font-size:10px">TO<br>
+                                      15-6, 15-6, Waddels Rd,
+                                      Davidpuram, Kilpauk,
+                                      Chennai, Tamil Nadu
+                                      600084, </p>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                              <div class="row mt-3">
+                                <div class="col-lg-12 col-md-12 c0l-sm-12">
+                                  <p class="cashondelivery">Courire assigned: R V
+                                    SRIRAM<br>
+                                    Trip Cost: 230₹<br>
+                                    Payment: Cash On Delivery
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="text-center mt-4 mb-2">
+                                <button mat-raised-button type="button" class=" btn_details">MORE DETAILS</button>
+                              </div>
+
+
+                            </div>
+
+                          </div>
+                        </mat-card-content>
+                      </mat-card>
+
+
+
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 mt-3">
+                      <p>Completed Trips<br>
+                        <button mat-raised-button type="button" class=" btn_complete mt-2">Load Complete Trips</button>
+                      </p>
+
+                      <mat-card class="m-0">
+                        <mat-card-content class="p-0">
+                          <div class=" card_active mt-3">
+                            <div class=" p-2">
+                              <p class="text-center cashondelivery">25.1.2023 10:15:27 654321</p>
+                              
+                              <div class="col-lg-7 col-md-6 col-sm-6 mt-2">
+                                <p><b>ONE-WAY TRIP</b> </p>
+                              </div>
+                              <div class="col-5"></div>
+
+                              <div class="row">
+
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                  <div class="card card_bg p-2">
+                                    <p> Time: 10:15:27 am<br>Date: 26.1.2023</p>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                              <div class="row mt-2">
+
+                                <P>Trip Distance: 5km</P>
+                                <div class="col-sm-6 col-md-6 col-lg-6 mt-2">
+                                  <div class="card card_bg p-1">
+                                    <p style="font-size:10px">FROM<br>
+                                      15-6, 15-6, Waddels Rd,
+                                      Davidpuram, Kilpauk,
+                                      Chennai, Tamil Nadu
+                                      600084, </p>
+                                  </div>
+                                </div>
+
+
+                                <div class="col-sm-6 col-md-6 col-lg-6 mt-2">
+                                  <div class="card card_bg p-1">
+                                    <p style="font-size:10px">TO<br>
+                                      15-6, 15-6, Waddels Rd,
+                                      Davidpuram, Kilpauk,
+                                      Chennai, Tamil Nadu
+                                      600084, </p>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                              <div class="row mt-3">
+                                <div class="col-lg-12 col-md-12 c0l-sm-12">
+                                  <p class="cashondelivery">Courier assigned: R V
+                                    SRIRAM<br>
+                                    Trip Cost: 230₹<br>
+                                    Payment: Cash On Delivery
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="text-center mt-4 mb-2">
+                                <button mat-raised-button type="button" class=" btn_details">MORE DETAILS</button>
+                              </div>
+
+
+                            </div>
+
+                          </div>
+                        </mat-card-content>
+                      </mat-card>
+
+
+                    </div>
+
+
+
+                  </div>
+
+
+
+
+                </div>
+
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+
+
+        </div>
+        <div class="col-lg-4 mt-3">
+
+          <mat-card class="m-0">
+            <mat-card-content class="p-0">
+              <div class=" card_height p-3">
+
+                <div class="text-center p-3">
+                  <img class="img-fluid " src="assets\images\custm-nbb\user_image _vector.png" alt="Vector_img"
+                    srcset="">
+                  <div class="">
+                    <form class="mt-3">
+                      <input type="file" name="myfile">
+                    </form>
+                  </div>
+                </div>
+
+
+              </div>
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+
+      </div>
+    </div>
