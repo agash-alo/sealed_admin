@@ -101,51 +101,66 @@ export class AuthService {
     });
   }
 
-  // guestpost(url: string, pbody: any): Observable<any> {
-  //    url = environment.baseUrl + url;
-  //   return this.http.post(url, pbody).pipe(map(res => res));
-  // }
+  guestpost(url: string, pbody: any): Observable<any> {
+     url = environment.baseUrl + url;
+    return this.http.post(url, pbody).pipe(map(res => res));
+  }
 
-  // postGuestAuthApiData(url: string,body:any): Observable<any> {
-  //   this.authorization = sessionStorage.getItem('token') ?  sessionStorage.getItem('token') : "" ;
-  //   this.userId =localStorage.getItem('userid') ?  localStorage.getItem('userid') : "" ;
-  //   console.log( this.authorization)
-  //   url = environment.baseUrl + url;
-  //   const options = { 'headers': { 'Content-Type': 'application/json', 'Authorization': this.authorization,'userId':"64057a91c8388dd17b10f59e" } };
-  //     return this.http.post<any>(url,body,options)
-  //     .pipe(
-  //       tap(_ => console.log('test')),
-  //       catchError(this.handleError('err', []))
-  //     );
-  // }
+  postGuestAuthApiData(url: string,body:any): Observable<any> {
+    this.authorization = sessionStorage.getItem('tokenA') ?  sessionStorage.getItem('tokenA') : "" ;
+    this.userId = localStorage.getItem('useridA')? localStorage.getItem('useridA'): '';
+    console.log( this.authorization)
+    url = environment.baseUrl + url;
+    const options = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: this.authorization,
+        userId: this.userId,
+      },
+    };
+      return this.http.post<any>(url,body,options)
+      .pipe(
+        tap(_ => console.log('test')),
+        catchError(this.handleError('err', []))
+      );
+  }
 
-  // putGuestAuthApiData(url: string,body:any): Observable<any> {
-  //   this.authorization = sessionStorage.getItem('token') ?  sessionStorage.getItem('token') : "" ;
-  //   this.userId =localStorage.getItem('userid') ?  localStorage.getItem('userid') : "" ;
-  //   console.log( this.authorization)
-  //   url = environment.baseUrl + url;
-  //   const options = { 'headers': { 'Content-Type': 'application/json', 'Authorization': this.authorization,'userId':"64057a91c8388dd17b10f59e" } };
+  putGuestAuthApiData(url: string,body:any): Observable<any> {
+    this.authorization = sessionStorage.getItem('tokenA')
+      ? sessionStorage.getItem('tokenA'): '';
+   this.userId = localStorage.getItem('useridA')
+     ? JSON.parse(localStorage.getItem('useridA') || '')
+     : '';
+    console.log( this.authorization)
+    url = environment.baseUrl + url;
+    const options = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: this.authorization,
+        userId: this.userId,
+      },
+    };
+    return this.http.put<any>(url, body, options).pipe(
+      tap((_) => console.log('test')),
+      catchError(this.handleError('err', []))
+    );
+  }
 
-  //   return this.http.put<any>(url,options,body)
-  //     .pipe(
-  //       tap(_ => console.log('test')),
-  //       catchError(this.handleError('err', []))
-  //     );
-  // }
+  deleteGuestAuthApiData(url: string): Observable<any> {
+    this.authorization = sessionStorage.getItem('tokenA') ?  sessionStorage.getItem('tokenA') : "" ;
+    this.userId = localStorage.getItem('useridA')
+      ? JSON.parse(localStorage.getItem('useridA') || '')
+      : '';
+    console.log( this.authorization)
+    url = environment.baseUrl + url;
+    const options = { 'headers': { 'Content-Type': 'application/json', 'Authorization': this.authorization,'userId':this.userId } };
 
-  // deleteGuestAuthApiData(url: string): Observable<any> {
-  //   this.authorization = sessionStorage.getItem('token') ?  sessionStorage.getItem('token') : "" ;
-  //   this.userId =localStorage.getItem('userid') ?  localStorage.getItem('userid') : "" ;
-  //   console.log( this.authorization)
-  //   url = environment.baseUrl + url;
-  //   const options = { 'headers': { 'Content-Type': 'application/json', 'Authorization': this.authorization,'userId':"64057a91c8388dd17b10f59e" } };
-
-  //   return this.http.delete<any>(url,options)
-  //     .pipe(
-  //       tap(_ => console.log('test')),
-  //       catchError(this.handleError('err', []))
-  //     );
-  // }
+    return this.http.delete<any>(url,options)
+      .pipe(
+        tap(_ => console.log('test')),
+        catchError(this.handleError('err', []))
+      );
+  }
 }
 
 

@@ -1,11 +1,11 @@
 <div fxLayout="row wrap">
   <div fxFlex.gt-sm="100" fxFlex="100" style="overflow:hidden;">
 
-    <!-- <div class="container mt-3">
-        <div class="row ">
-          <span><i class="fa fa-arrow-left" aria-hidden="true" (click)="returntocourier()"></i></span>
-        </div>
-      </div> -->
+    <div class="container-fluid mt-3">
+      <div class="row ">
+        <span><i class="fa fa-arrow-left" aria-hidden="true" (click)="returntocourier()"></i></span>
+      </div>
+    </div>
 
     <div class="container-fluid ">
 
@@ -26,8 +26,17 @@
 
 
                   <div class="col-6">
-                    <div class="unverify">
-                      <span class="text-center">{{status}}</span>
+                    <div class="">
+                      <!-- <span class="text-center">{{isVerified}}</span> -->
+
+                      <div *ngIf="courierdetails.isVerified; else verified">
+                        <div [ngClass]="{'green': courierdetails.isVerified == true}">verified</div>
+                      </div>
+
+                      <ng-template #verified>
+                        <div [ngClass]="{'red': courierdetails.isVerified != true}">unverified</div>
+
+                      </ng-template>
                     </div>
                   </div>
                   <div class="col-6"></div>
@@ -38,7 +47,16 @@
 
                   <div class="col-lg-6 col-md-6 col-sm-12">
                     <p>{{courierdetails?.name}}</p>
-                    <p><b>Status:</b> {{status}}</p>
+                    <p><b>Status:</b> 
+                      <span *ngIf="courierdetails.isVerified; else verifiedstatus">
+                       verified
+                      </span>
+                      
+                      <ng-template #verifiedstatus>
+                        <span>unverified</span>
+                      
+                      </ng-template>
+                    </p>
                   </div>
 
                   <div class="col-lg-6 col-md-6 col-sm-12">
@@ -47,8 +65,9 @@
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12">
                       <div class="button">
-                        <button mat-raised-button color="primary" (click)="verifystatus()" [ngClass]="{'green' : toggle, 'red': !toggle}">{{status}}</button>
-                        
+                        <button mat-raised-button color="primary" (click)="verifystatus()"
+                          [ngClass]="{'green' : toggle, 'red': !toggle}">verify</button>
+
                       </div>
                     </div>
                     <div class="col-6"></div>
@@ -68,11 +87,12 @@
                     <div class="col-lg-6 col-md-6 col-sm-12">
                       <p><b>Address</b><br>
                         <span *ngFor="let items of courierdetails?.addressDetails">
-                        
-                        {{items.address.fullAddress}} , {{items.address.street}} , {{items.address.city}}<br> {{items.address.state}}
-                        {{items.address.country}} , {{items.address.postalCode}}.<br>
+
+                          {{items.address.fullAddress}} , {{items.address.street}} , {{items.address.city}}<br>
+                          {{items.address.state}}
+                          {{items.address.country}} , {{items.address.postalCode}}.<br>
                         </span>
-                        </p>
+                      </p>
                     </div>
                     <div class="col-6"></div>
                   </div>
@@ -90,14 +110,15 @@
                       <p>Active Trips<br>
                         <button mat-raised-button type="button" class=" btn_active mt-2">Load Activate Trips</button>
                       </p>
-                    
-                      <mat-card class="m-0" >
+
+                      <mat-card class="m-0">
                         <mat-card-content class="p-0">
                           <div class=" card_active mt-3">
                             <div class=" p-2">
-                              <p class="text-center cashondelivery" >
+                              <p class="text-center cashondelivery">
                                 <!-- {{items.createdAt |date:'medium'}} -->
-                                25.1.2023 10:15:27 654321</p>
+                                25.1.2023 10:15:27 654321
+                              </p>
                               <div class="col-lg-7 col-md-12 col-sm-12 mt-2">
                                 <p><b>ONE-WAY TRIP</b></p>
                               </div>
@@ -119,15 +140,15 @@
                                 <div class="col-sm-6 col-md-6 col-lg-6 mt-2">
                                   <div class="card card_bg p-1">
                                     <p style="font-size:10px">FROM<br>
-                                    <!-- <span *ngFor="let aa of items.address">
+                                      <!-- <span *ngFor="let aa of items.address">
                                       {{aa.addressType}}
                                     </span> -->
-                                    15-6, 15-6, Waddels Rd,
-                                    Davidpuram, Kilpauk,
-                                    Chennai, Tamil Nadu
-                                    600084,
-                                    
-                                      </p>
+                                      15-6, 15-6, Waddels Rd,
+                                      Davidpuram, Kilpauk,
+                                      Chennai, Tamil Nadu
+                                      600084,
+
+                                    </p>
                                   </div>
                                 </div>
 
@@ -177,7 +198,7 @@
                           <div class=" card_active mt-3">
                             <div class=" p-2">
                               <p class="text-center cashondelivery">25.1.2023 10:15:27 654321</p>
-                              
+
                               <div class="col-lg-7 col-md-6 col-sm-6 mt-2">
                                 <p><b>ONE-WAY TRIP</b> </p>
                               </div>
@@ -265,14 +286,26 @@
               <div class=" card_height p-3">
 
                 <div class="text-center p-3">
-                  <img class="img-fluid " src="assets\images\custm-nbb\user_image _vector.png" alt="Vector_img"
-                    srcset="">
+                  <span class="">
+                    <img class="img-fluid userimg " src={{imagelist?.imgUrl}} alt="">
+                  </span>
+
                   <div class="">
                     <form class="mt-3">
-                      <input type="file" name="myfile">
+                      <input type="file" name="myfile" (change)="onChange($event.target.files)">
+                      <!-- <button mat-raised-button >upload</button> -->
                     </form>
                   </div>
                 </div>
+                <!-- <div class="avatar-upload">
+                  <div class="avatar-edit">
+                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput (change)="uploadFile($event)" />
+                  </div>
+                  <div class="avatar-preview">
+                    <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+                    </div>
+                  </div>
+                </div> -->
 
 
               </div>

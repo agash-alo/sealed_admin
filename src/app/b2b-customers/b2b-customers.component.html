@@ -22,9 +22,9 @@
                         <div class=" d-flex">
                           <div class=" searchone">
                             <div class="input-group ">
-                              <input type="text" placeholder="Search Customers" class="form-control">
+                              <input type="text" placeholder="Search Customers"autocomplete="off" class="form-control" (input)="searchCustomer($event)">
                               <div class="input-group-append">
-                                <button class="btn btnsearch">
+                                <button class="btn btnsearch" type="submit" value="search">
                                   <i class="fas fa-search text-white"></i>
                                 </button>
                               </div>

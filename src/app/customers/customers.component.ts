@@ -41,10 +41,12 @@ export class CustomersComponent implements OnInit {
     let offset = currentPage * itemsPerPage + 1;
     return (offset = offset < 0 ? offset : offset - 1);
   }
+  // search filter
   searchCustomer(e: any) {
     this.value = e?.target?.value;
     this.getUserDetails();
   }
+  // navigate to customer_view
   customersView(i: any) {
     localStorage.setItem(
       'userViewId',

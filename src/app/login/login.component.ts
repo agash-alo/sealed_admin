@@ -31,8 +31,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private toastr: ToastrService,
     public spinner: NgxSpinnerService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -69,16 +68,16 @@ export class LoginComponent implements OnInit {
 
   async changeTempPass() {}
 
-  drawlist() {
-    this.checkTokenverify();
-    if (this.roles.includes('Admin user')) {
-      this.router.navigate(['/meal-plan']);
-    } else if (this.roles.includes('User Manager')) {
-      this.router.navigate(['/userlist']);
-    } else {
-      this.router.navigate(['/meal-plan']);
-    }
-  }
+  // drawlist() {
+  //   this.checkTokenverify();
+  //   if (this.roles.includes('Admin user')) {
+  //     this.router.navigate(['/meal-plan']);
+  //   } else if (this.roles.includes('User Manager')) {
+  //     this.router.navigate(['/userlist']);
+  //   } else {
+  //     this.router.navigate(['/meal-plan']);
+  //   }
+  // }
 
   forgot() {
     this.router.navigate(['/forgotpass']);

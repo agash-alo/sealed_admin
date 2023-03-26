@@ -4,19 +4,40 @@
     padding: 13px;
     border-radius: 6px;
 }
+.userimg {
+    max-width: 50%;
+    height: 50%;
+    border-radius: 50%;
+}
+.red{
+    padding: 5px;
+    text-align: center;
+    background:#FF0C0C;
+    color: #F4F4F4;
+    border-radius: 0px 5px 0px 0px;
+    
+}
+.green{
+    padding: 5px;
+    text-align: center;
+    background:#21aa47;
+    color: #F4F4F4;
+    border-radius: 0px 5px 0px 0px;
+    
+}
 
 h6{
   font-size: 14px;
   font-weight:600;
 }
-.unverify{
-  padding: 5px; 
-  text-align: center;
-  background: red;
-  color: #F4F4F4;
-  border-radius: 5px 0px 0px 0px;
-  height: 100%;
-}
+// .unverify{
+//   padding: 5px; 
+//   text-align: center;
+//   background: red;
+//   color: #F4F4F4;
+//   border-radius: 5px 0px 0px 0px;
+//   height: 100%;
+// }
 .mat-raised-button {
    
     line-height: 28px !important;

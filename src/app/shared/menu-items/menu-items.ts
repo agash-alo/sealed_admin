@@ -44,12 +44,12 @@ const MENUITEMS = [
     icon: 'search',
   },
   
-  {
-    state: 'delivery_trip',
-    name: 'Delivery Trip',
-    type: 'link',
-    icon: 'group',
-  },
+  // {
+  //   state: 'delivery_trip',
+  //   name: 'Delivery Trip',
+  //   type: 'link',
+  //   icon: 'group',
+  // },
   {
     state: 'stamp_document',
     name: 'stamp Document',

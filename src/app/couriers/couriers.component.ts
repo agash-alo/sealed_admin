@@ -18,14 +18,18 @@ export class CouriersComponent implements OnInit {
   totalCount: any;
   userType: any;
   value: any;
-  // status = [
-  //   {id: "1", isVerified :"true",value:"verified"},
-  //   {id:"2",isverfied:"false",value:"unverfied"}
-  // ];
+  status = [
+    {id: "1", isVerified :"true",value:"unverified"},
+    {id:"2",isVerfied:"false",value:"verfied"}
+  ];
+  courierId: any;
 
   constructor(private router: Router, private apiService: ApiServiceService) {}
 
   ngOnInit(): void {
+        this.courierId = localStorage.getItem('courierViewId')
+          ? JSON.parse(localStorage.getItem('courierViewId') || '')
+          : '';
     console.log('hii');
     this.getListCourier();
   }
@@ -57,10 +61,12 @@ export class CouriersComponent implements OnInit {
     this.getListCourier();
   }
 
-  courier_payout() {
+  courierPayout(i:any) {
+    console.log(i);
+    // localStorage.setItem()
     this.router.navigate(['/courier-payout']);
   }
-  generate_payout() {
+  generatePayout() {
     this.router.navigate(['/courier-generate-payout']);
   }
 
@@ -70,5 +76,14 @@ export class CouriersComponent implements OnInit {
     localStorage.setItem('courierViewId', JSON.stringify(i));
     //  console.log(localStorage.getItem('courierViewId'), 'dfsfdff');
     this.router.navigate(['/courier-view']);
+  }
+  deletecourier()
+  {
+      this.apiService.deleteCourier(this.courierId).subscribe((res) => {
+       this.getListCourier();
+      }),
+        (err) => {
+         
+        };
   }
 }

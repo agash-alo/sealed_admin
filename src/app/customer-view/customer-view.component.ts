@@ -10,10 +10,12 @@ import { ApiServiceService } from '../service/api-service.service';
 export class CustomerViewComponent implements OnInit {
   userdetails: any;
   addressDetails;
+  viewshow: boolean =false;
+  activetrip: any;
   constructor(private router: Router, private apiService: ApiServiceService) {}
-  userId: any;
+  cususerId: any;
   ngOnInit(): void {
-    this.userId = localStorage.getItem('userViewId')
+    this.cususerId = localStorage.getItem('userViewId')
       ? JSON.parse(localStorage.getItem('userViewId') || '')
       : '';
     this.getUserViewDetails();
@@ -21,15 +23,27 @@ export class CustomerViewComponent implements OnInit {
 
   userView: any;
   getUserViewDetails() {
-    console.log('fd', this.userId);
+    console.log('fd', this.cususerId);
     this.apiService
-      .getListUsergetById(this.userId)
+      .getListUsergetById(this.cususerId)
       .then((res) => {
         console.log(res);
         this.userdetails = res.data;
         console.log(this.userdetails);
-        console.log(this.userdetails.addressDetails[0]?.address?.street);
+        // console.log(this.userdetails.addressDetails[0]?.address?.street);
       })
       .catch((err) => {});
+  }
+  viewDetails()
+  {
+    this.viewshow =true;
+     this.apiService
+       .getListCustomerActiveTrip(this.cususerId)
+       .then((res) => {
+         this.activetrip = res.data.data;
+         console.log(this.activetrip);
+        
+       })
+       .catch((err) => {});
   }
 }

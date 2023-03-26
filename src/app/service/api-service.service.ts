@@ -1,8 +1,10 @@
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { type } from 'os';
 
-import { Observable, observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, observable, of, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 // import { JwtHelperService } from '@auth0/angular-jwt';
 // import { map,tap,catcherrors} from rxjs/operators;
@@ -11,7 +13,8 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class ApiServiceService {
-  constructor(private auth: AuthService) {}
+  userId: any;
+  constructor(private auth: AuthService, private http: HttpClient) {}
 
   // login
   LoginIn(postData: any): Observable<any> {
@@ -58,6 +61,21 @@ export class ApiServiceService {
         });
     });
   }
+  //getlistcustomerorderactivetrip
+  getListCustomerActiveTrip(customerId: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let url = '';
+      url = `orders?userId=${customerId}`;
+      this.auth
+        .guestAuthGetapi(url)
+        .then((resp: any) => {
+          resolve(resp);
+        })
+        .catch((err: any) => {
+          reject(err);
+        });
+    });
+  }
   // getListUsergetByAddress(userId: any, type: any): Promise<any> {
   //   return new Promise((resolve, reject) => {
   //     let url = '';
@@ -87,6 +105,31 @@ export class ApiServiceService {
           reject(err);
         });
     });
+  }
+  //verified update
+  // updateCourierVerified(userId: any, body: any): Promise<any> {
+  //   return new Promise((resolve, reject) => {
+  //     let url = '';
+  //     url = `users/${userId}`;
+  //     this.auth
+  //       .postGuestAuthApiData(url,body)
+  //       .then((resp: any) => {
+  //         resolve(resp);
+  //       })
+  //       .catch((err: any) => {
+  //         reject(err);
+  //       });
+  //   });
+  // }
+
+  updateCourierVerified(userId: any, verified: any) {
+    let url = `users/${userId}`;
+    return this.auth.putGuestAuthApiData(url, verified).pipe(map((res) => res));
+  }
+  //delete courier
+  deleteCourier(courierId: any) {
+    let url = `users/${courierId}`;
+    return this.auth.deleteGuestAuthApiData(url).pipe(map((res) => res));
   }
   // getCourierdetailgetByAddress(courierId: any,type:any): Promise<any> {
   //   return new Promise((resolve, reject) => {
@@ -138,4 +181,62 @@ export class ApiServiceService {
   //     reject(err);
   //   });
   // }
+  UploadFile(fileData): Observable<any> {
+    // console.log('FROM file upload ==>', fileData);
+
+    this.userId = localStorage.getItem('useridA')
+      ? JSON.parse(localStorage.getItem('useridA') || '')
+      : '';
+    let url = environment.baseUrl + 'file/upload';
+    return this.http
+      .post<any>(url, fileData, {
+        headers: {
+          Authorization: `${sessionStorage.getItem('tokenA')}`,
+          userId: this.userId,
+        },
+        reportProgress: true,
+        observe: 'events',
+      })
+      .pipe(
+        map((event: any) => {
+          switch (event.type) {
+            case HttpEventType.UploadProgress:
+              const progress = Math.round((100 * event.loaded) / event.total);
+
+              // console.log('progress ')
+
+              return { status: 'progress', message: progress };
+
+            case HttpEventType.Response:
+              // console.log('response ', event.body);
+              return event.body;
+            default:
+              return `Unhandled event: ${event.type}`;
+          }
+        }),
+
+        catchError(this.handleError('err', []))
+      );
+  }
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (err: any): Observable<T> => {
+      console.error('SERVER ERR', err); // log to console instead ad
+      // console.log(`${operation} failed: ${err.message}`);
+      // this.alertServ.displayAlert("", "Server Connection Problem"+ JSON.stringify(error));
+      if ((err.status = 500)) {
+        // this.snackBar.open(err.error.message, 'close');
+        // return err.error.message;
+        return throwError(err);
+      }
+      if ((err.status = 401)) {
+        // alert('Server Connection Problem');
+      } else if ((err.status = 403)) {
+        // alert('Server Connection Problem');
+      } else {
+        // alert(err.error.message);
+        // return;
+      }
+      return of(result as T);
+    };
+  }
 }

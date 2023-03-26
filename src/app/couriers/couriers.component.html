@@ -62,10 +62,17 @@
 
                     <div class="col-6"></div>
                     <div class="col-6">
-                      <div class="status">
-                        <span class="text-center">{{items.isVerified}}</span>
+                      <div class="">
+                        <!-- <span class="text-center">{{items.isVerified}}</span> -->
+                        <div *ngIf="items.isVerified; else verified"  >
+                        <div [ngClass]="{'green': items.isVerified == true}">verified</div>  
+                        </div>
 
-                        
+                        <ng-template #verified >
+                        <div [ngClass]="{'red': items.isVerified != true}">unverified</div>
+                          
+                        </ng-template>
+
                       </div>
                     </div>
 
@@ -90,12 +97,13 @@
 
                   <div class="row mt-3">
                     <div class="col-6 text-center">
-                      <button mat-stroked-button type="button" class="btn btn-primary1" (click)="couriersView(items._id)">VIEW
+                      <button mat-stroked-button type="button" class="btn btn-primary1"
+                        (click)="couriersView(items._id)">VIEW
                         <br> DETAILS</button>
                     </div>
                     <div class="col-6 text-center">
-                      <button mat-stroked-button type="button" class="btn btn-primary1"
-                        (click)="courier_payout()">PAYOUT <br>HISTORY</button>
+                      <button mat-stroked-button type="button" class="btn btn-primary1" (click)="courierPayout()">PAYOUT
+                        <br>HISTORY</button>
                     </div>
                   </div>
 
@@ -103,14 +111,14 @@
                   <div class="row mt-3 mb-3">
                     <div class="col-6 text-center">
                       <button mat-stroked-button type="button" class="btn btn-primary1"
-                        (click)="generate_payout()">GENARATE<br> PAYOUT</button>
+                        (click)="generatePayout()">GENARATE<br> PAYOUT</button>
                     </div>
                     <div class="col-6 text-center">
                       <button mat-stroked-button type="button" class="btn btn-primary1">SEARCH<br> TRIPS</button>
                     </div>
                   </div>
                   <div class="text-center">
-                    <button mat-raised-button color="primary"
+                    <button mat-raised-button color="primary" (click)="deletecourier()"
                       style="background-color:#FF0C0C!important;width: 80% !important;">
                       REMOVE COURIER</button>
                   </div>

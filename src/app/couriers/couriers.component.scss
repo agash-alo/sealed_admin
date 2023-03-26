@@ -186,7 +186,7 @@ button.mat-focus-indicator.mat-raised-button.mat-button-base {
     font-size: 13px !important;
 }
 
-.status{
+.red{
     padding: 5px;
     text-align: center;
     background:#FF0C0C;
@@ -194,6 +194,15 @@ button.mat-focus-indicator.mat-raised-button.mat-button-base {
     border-radius: 0px 5px 0px 0px;
     
 }
+.green{
+    padding: 5px;
+    text-align: center;
+    background:#21aa47;
+    color: #F4F4F4;
+    border-radius: 0px 5px 0px 0px;
+    
+}
+
 // .verify{
 //     padding: 5px;
 //     text-align: center;

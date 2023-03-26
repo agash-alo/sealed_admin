@@ -1,7 +1,5 @@
 <div fxLayout="row wrap">
   <div fxFlex.gt-sm="100" fxFlex="100">
-
-
   <div class="container-fluid p-3">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-7">
@@ -17,48 +15,42 @@
 </div>
   </mat-card-content>
 </mat-card>
-
         <mat-card class="m-0">
           <mat-card-content>
               <div class="mb-2">
-                <div class="d-flex">
-                    <button class="green mb-2">  <br></button>
+                <div class="">
+                    <!-- <button class="green mb-2">  <br></button> -->
                     <div class="text-center">
                         <h4 class=" heading">Trips</h4>
                     </div>
-                    
                 </div>
-                
                 <div class="row">
                   <div class="col-sm-6 col-md-6 col-lg-6 mb-2 activetrip">
                     <div>
                       <h5 class="heading">Active trips</h5>
-                      <button mat-raised-button color="primary" class="green mb-2">View</button>
+                      <button mat-raised-button color="primary"  (click)="viewDetails()" class="green mb-2">View</button>
                     </div>
-                      <mat-card class="m-0">
+                    <div *ngIf="viewshow == true">
+                      <mat-card class="m-0" *ngFor="let item of activetrip; let i = index" >
                         <mat-card-content class="p-0">
                             <div class=" trip p-1">
                               <div class="my-2">
-                                <h6 class="text-center"><b>{{userdetails?.createdAt}}   654321</b></h6>
+                                <h6 class="text-center"><b>{{item?.createdAt | date}}   654321</b></h6>
                               </div>
                               <div class="px-1 ">
                                 <div class="col-sm-8 col-md-8">
                                   <h5 class="tripheader">ONE-WAY TRIP</h5>
                                   <div class="green p-2 mb-2">
-                                    <h6> Time: 10:15:27 am </h6>
-                                    <h6>Date: 26.1.2023 </h6>
+                                    <h6> Time: {{item?.createdAt | date:'mediumTime'}} </h6>
+                                    <h6>Date: {{item?.createdAt | date}} </h6>
                                   </div>
-                                  <h6>Trip Distance: 5km</h6>
-                            
+                                  <h6>Trip Distance: {{item?.totalKms}}</h6>
                                 </div>
                                 <div class="row p-2">
                                   <div class="col-sm-4 col-md-6  col-lg-6 p-1">
                                     <div class="green p-1">
                                       <h6 style="font-size: 12px;"><b>FROM</b></h6>
-                                      <h6 style="font-size: 12px;"> 15-6, 15-6, Waddels Rd,
-                                        Davidpuram, Kilpauk,
-                                        Chennai, Tamil Nadu
-                                        600084. </h6>
+                                      <h6 style="font-size: 12px;">{{item?.pickupAddress[i]?.street}} </h6>
                                     </div>
                                   </div>
                                   <div class="col-sm-4 col-md-6  col-lg-6 p-1">
@@ -70,7 +62,6 @@
                                         600084. </h6>
                                     </div>
                                   </div>
-                            
                                 </div>
                                 <h6>Courier assigned: R V SRIRAM</h6>
                                 <h6>Trip Cost: 230₹</h6>
@@ -78,17 +69,11 @@
                                 <div class="text-center my-3">
                                   <button mat-raised-button class="blue px-3">MORE DETAILS</button>
                                 </div>
-                            
                               </div>
-                            
-                            
-                            
                             </div>
                         </mat-card-content>
                       </mat-card>
-
-                   
-                  </div>
+                  </div></div>
                   <div class="col-sm-6 col-md-6 col-lg-6 mb-2 completetrip">
                     <div>
                       <h5 class="heading">Completed trips </h5>
@@ -105,24 +90,25 @@
       <div class="col-sm-12 col-md-12 col-lg-5">
         <mat-card class="m-0">
           <mat-card-content>
-                <div class="">
+                <div class="" *ngFor="let items of userdetails?.addressDetails">
                   <h4 class="text-center heading"> Customer Address</h4>
                   <div class="">
-                    <h4 class="heading">Home</h4>
+                    <h4 class="heading">{{items.address.addressType}}</h4>
                     <div>
-                      <!-- <h5 class="header"> -->
                       <p class="header" >
-                        <span *ngFor="let items of userdetails?.addressDetails; let i=index;">
-{{items[0].address?.street}}
-                        </span>
-                        </p>
+                      {{items.address.fullAddress}} {{items.address.street}} {{items.address.landMark}}
+{{items.address.city}} ,{{items.address.state}} {{items.address.country}} {{items.address.postalCode}}
+                    </p>  
                       <p class="header" >
                         44, 2nd Cross Street, near Jaya School,
                         CIT Nagar West, CIT Nagar,
                         Chennai, Tamil Nadu 600024,
                         India</p>
-                      <!-- </h5> -->
-                
+                        <p class="header">
+                         <b> contact Person:</b>{{items.address.contactPerson}}
+                          <br>
+                         <b> contact Person Number:</b>{{items.address.contactPersonNumber}}
+                        </p>
                     </div>
                   </div>
                 </div>
