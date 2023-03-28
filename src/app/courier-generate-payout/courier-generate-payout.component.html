@@ -1,70 +1,78 @@
 <div fxLayout="row wrap">
   <div fxFlex.gt-sm="100" fxFlex="100">
     <div class="">
-      <div class="col-lg-6">
+      <div class="col-lg-8">
 
-     
-    <mat-card>
-      <mat-card-content>
-        <div class="row">
-          <div class="col-12">
-        
-            <div class="">
-              <mat-label>ENTER TRIP DATE RANGE</mat-label>
-            </div>
-        
-        
-        
-            <div class="row">
-              <div class="col-6">
-                
-                  <mat-form-field>
-                  
-                    <input matInput [matDatepicker]="picker1" placeholder="MM/DD/YYYY" [formControl]="">
-                  
-                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                    <mat-datepicker #picker1></mat-datepicker>
-                  </mat-form-field>
-                
-                
+
+        <mat-card>
+          <mat-card-content>
+            <!-- <div class="row">
+              <div class="col-12">
+
+                <div class="">
+                  <mat-label>ENTER TRIP DATE RANGE</mat-label>
+                </div> -->
+            <!-- <div class="row">
+                  <div class="col-6">
+
+                    <mat-form-field>
+
+                      <input matInput [matDatepicker]="picker1" placeholder="MM/DD/YYYY" [formControl]="">
+
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+
+
+                  </div>
+                  <div class="col-6">
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker2" placeholder="MM/DD/YYYY" [formControl]="">
+
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6">
+                    <div class="searchbtn">
+                      <button mat-raised-button mat-flat-button color="primary">SEARCH DATE</button>
+
+                    </div>
+                  </div>
+
+
+
+
+                  <div class="col-2">
+
+                  </div>
+                </div> -->
+            <div class="row my-3">
+              <label for="text" class="text">ENTER TRIP DATE RANGE</label>
+
+              <div class="col-md-6 col-lg-4 col-sm-12 mt-2 ">
+                <input type="date" class="form-control">
               </div>
-              <div class="col-6">
-                <mat-form-field>
-                  <input matInput [matDatepicker]="picker2" placeholder="MM/DD/YYYY" [formControl]="">
-        
-                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                  <mat-datepicker #picker2></mat-datepicker>
-                </mat-form-field>
+              <div class="col-md-6 col-lg-4 col-sm-12 mt-2 ">
+                <input type="date" class="form-control">
               </div>
-              <div class="col-6">
-                <div class="searchbtn">
-                  <button mat-raised-button mat-flat-button color="primary">SEARCH DATE</button>
-        
+              <div class="col-md-6 col-lg-3 col-sm-12 mt-2">
+                <div class="searchbtn ">
+                  <button mat-raised-button color="primary">SEARCH DATE</button>
+
                 </div>
               </div>
-        
-        
-        
-        
-              <div class="col-2">
-        
-              </div>
             </div>
-        
-        
-        
-        
-        
-          </div>
-        </div>
-      </mat-card-content>
-      
-    </mat-card>
 
-   
+
+          </mat-card-content>
+
+        </mat-card>
+
+
       </div>
     </div>
-     <ng-container>
+    <ng-container>
       <mat-card>
         <mat-card-content>
 
@@ -75,8 +83,8 @@
                   <div class="row ">
                     <div class="col-6 col-md-12 col-lg-12 colheader">
                       <p class="payoutheading">Number of trips include
-                      in this <br>
-                       payout</p>
+                        in this <br>
+                        payout</p>
                     </div>
                     <div class="col-6 col-md-12  col-lg-12 ">
                       <span>10</span>
@@ -87,12 +95,12 @@
                   <div class=" row">
                     <div class="col-6 col-md-12 col-lg-12 colheader">
                       <p class="payoutheading">Total cost of all <br>
-                      Trips</p>
+                        Trips</p>
                     </div>
                     <div class="col-6 col-md-12 col-lg-12">
                       <span>₹3000</span>
                     </div>
-          
+
                   </div>
                 </div>
                 <div class="col-sm-12 col-md-2 col-lg-4">
@@ -115,16 +123,16 @@
                   </div>
                 </div> -->
                 <div class="col-sm-12 col-md-2 col-lg-3 viewbtn ">
-          
+
                   <div class=" p-2">
-                    <button mat-raised-button mat-flat-button color="primary" class="view">View</button>
+                    <button mat-raised-button mat-flat-button color="primary" class="view">Paid</button>
                   </div>
-          
+
                 </div>
               </div>
             </mat-card-content>
 
-            
+
           </mat-card>
 
           <div class="row">
@@ -134,7 +142,7 @@
                   <p>Date: 25/01/23</p>
                   <p>Time: 10:10:25am </p>
                   <p>Trip id: 654321</p>
-          
+
                 </div>
                 <div>
                   <button mat-raised-button class=" viewdetails"> View Details</button>
@@ -148,7 +156,7 @@
                   <p>Date: 25/01/23</p>
                   <p>Time: 10:10:25am </p>
                   <p>Trip id: 654321</p>
-            
+
                 </div>
                 <div>
                   <button mat-raised-button class=" viewdetails"> View Details</button>
@@ -162,7 +170,7 @@
                   <p>Date: 25/01/23</p>
                   <p>Time: 10:10:25am </p>
                   <p>Trip id: 654321</p>
-            
+
                 </div>
                 <div>
                   <button mat-raised-button class=" viewdetails"> View Details</button>
@@ -173,7 +181,7 @@
           </div>
         </mat-card-content>
       </mat-card>
-      
+
     </ng-container>
   </div>
 </div>

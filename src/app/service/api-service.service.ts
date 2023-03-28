@@ -14,6 +14,7 @@ import { AuthService } from './auth.service';
 })
 export class ApiServiceService {
   userId: any;
+  courierId: any;
   constructor(private auth: AuthService, private http: HttpClient) {}
 
   // login
@@ -65,7 +66,7 @@ export class ApiServiceService {
   getListCustomerActiveTrip(customerId: any): Promise<any> {
     return new Promise((resolve, reject) => {
       let url = '';
-      url = `orders?userId=${customerId}`;
+      url = `orders?userId=${customerId}&orderStatus=new,orderAssigned,orderInProgress,orderPickUped`;
       this.auth
         .guestAuthGetapi(url)
         .then((resp: any) => {
@@ -76,6 +77,24 @@ export class ApiServiceService {
         });
     });
   }
+
+  // getlistcustomerordercompletetrip
+
+  getListCustomerCompleteTrip(customerId: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let url = '';
+      url = `orders?userId=${customerId}&orderStatus=delivered`;
+      this.auth
+        .guestAuthGetapi(url)
+        .then((resp: any) => {
+          resolve(resp);
+        })
+        .catch((err: any) => {
+          reject(err);
+        });
+    });
+  }
+
   // getListUsergetByAddress(userId: any, type: any): Promise<any> {
   //   return new Promise((resolve, reject) => {
   //     let url = '';
@@ -96,6 +115,39 @@ export class ApiServiceService {
     return new Promise((resolve, reject) => {
       let url = '';
       url = `users/${courierId}`;
+      this.auth
+        .guestAuthGetapi(url)
+        .then((resp: any) => {
+          resolve(resp);
+        })
+        .catch((err: any) => {
+          reject(err);
+        });
+    });
+  }
+
+  //getlistcourierorderactivetrip
+  getCourierOrderActiveTrip(courierId: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let url = '';
+      url = `orders?userId=${courierId}&orderStatus=new,orderAssigned,orderInProgress,orderPickUped`;
+      this.auth
+        .guestAuthGetapi(url)
+        .then((resp: any) => {
+          resolve(resp);
+        })
+        .catch((err: any) => {
+          reject(err);
+        });
+    });
+  }
+
+  // getlistcourierordercompletetrip
+
+  getCourierOrderCompleteTrip(courierId: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let url = '';
+      url = `orders?userId=${courierId}&orderStatus=delivered`;
       this.auth
         .guestAuthGetapi(url)
         .then((resp: any) => {
@@ -130,6 +182,15 @@ export class ApiServiceService {
   deleteCourier(courierId: any) {
     let url = `users/${courierId}`;
     return this.auth.deleteGuestAuthApiData(url).pipe(map((res) => res));
+  }
+  deleteBanner(id: any) {
+    let url = `banner/${id}`;
+    return this.auth.deleteGuestAuthApiData(url).pipe(map((res) => res));
+  }
+
+  updateBanner(id:any){
+    let url = `banner/${id}`;
+    return this.auth.putGuestAuthApiData(url,id).pipe(map((res) =>res));
   }
   // getCourierdetailgetByAddress(courierId: any,type:any): Promise<any> {
   //   return new Promise((resolve, reject) => {
@@ -168,26 +229,31 @@ export class ApiServiceService {
         });
     });
   }
-  // getcourierlist(usertype?:any,limit?:any,offset?:any,value?:any ):Promise<any>{
-  // return new Promise((resolve, reject) => {
-  //   const rl=`deliveryman?usrtType=${usertype}&limit=${limit}&offset=${offset}&value-${value}`
-  // })
-  // this.auth
-  //   .guestAuthGetapi(url)
-  //   .then((resp: any) => {
-  //     resolve(resp);
-  //   })
-  //   .catch((err: any) => {
-  //     reject(err);
-  //   });
-  // }
+  getBannerList(type?: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const url = `banner?type=${type}`;
+      this.auth
+        .guestAuthGetapi(url)
+        .then((resp: any) => {
+          resolve(resp);
+        })
+        .catch((err: any) => {
+          reject(err);
+        });
+    });
+  }
   UploadFile(fileData): Observable<any> {
     // console.log('FROM file upload ==>', fileData);
 
     this.userId = localStorage.getItem('useridA')
       ? JSON.parse(localStorage.getItem('useridA') || '')
       : '';
-    let url = environment.baseUrl + 'file/upload';
+
+    this.courierId = localStorage.getItem('courierViewId')
+      ? JSON.parse(localStorage.getItem('courierViewId') || '')
+      : '';
+
+    let url = environment.baseUrl + `file/upload/${this.courierId}`;
     return this.http
       .post<any>(url, fileData, {
         headers: {
@@ -238,5 +304,78 @@ export class ApiServiceService {
       }
       return of(result as T);
     };
+  }
+
+  // getlistb2bcustomer
+
+  getAllb2bCustomer(
+    usertype?: any,
+    limit?: any,
+    offset?: any,
+    value?: any
+  ): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let url = '';
+      if (value) {
+        url = `users?userType=${usertype}&limit=${limit}&offset=${offset}&value=${value}`;
+      } else {
+        url = `users?userType=${usertype}&limit=${limit}&offset=${offset}`;
+      }
+
+      this.auth
+        .guestAuthGetapi(url)
+        .then((resp: any) => {
+          resolve(resp);
+        })
+        .catch((err: any) => {
+          reject(err);
+        });
+    });
+  }
+
+  updateb2bcustomer(userId: any, verified: any) {
+    let url = `users/${userId}`;
+    return this.auth.putGuestAuthApiData(url, verified).pipe(map((res) => res));
+  }
+  createBanner(payload: any) {
+    let url = `banner`;
+    return this.auth.postGuestAuthApiData(url, payload).pipe(map((res) => res));
+  }
+  // -----     banner management    ----
+
+  uploadBanner(fileData): Observable<any> {
+    this.userId = localStorage.getItem('useridA')
+      ? JSON.parse(localStorage.getItem('useridA') || '')
+      : '';
+    let url = environment.baseUrl + `file/bannerUpload`;
+    return this.http
+      .post<any>(url, fileData, {
+        headers: {
+          Authorization: `${sessionStorage.getItem('tokenA')}`,
+          userId: this.userId,
+        },
+        reportProgress: true,
+        observe: 'events',
+      })
+      .pipe(
+        map((event: any) => {
+          switch (event.type) {
+            case HttpEventType.UploadProgress:
+              const progress = Math.round((100 * event.loaded) / event.total);
+
+              // console.log('progress ')
+
+              return { status: 'progress', message: progress };
+
+            case HttpEventType.Response:
+              // console.log('response ', event.body);
+              return event.body;
+            default:
+              return `Unhandled event: ${event.type}`;
+          }
+        }),
+
+        catchError(this.handleError('err', []))
+      );
   }
 }

@@ -6,7 +6,7 @@
           <div class="col-sm-6 col-md-3 col-lg-3 customerbtn">
             <div classs>
               <button type="button" class="btn buttons">
-                <span class="customer">B2B Customers</span> <span class="badge badge-light float-right violet">20</span>
+                <span class="customer">B2B Customers</span> <span class="badge badge-light float-right violet">{{totalCount}}</span>
               </button>
             </div>
       
@@ -39,7 +39,7 @@
             <mat-card-content>
                 <div class="">
                   <div class="row p-0">
-                    <div class="col-sm-6 col-md-6 col-lg-4 mb-4  " *ngFor="let items of customer_list">
+                    <div class="col-sm-6 col-md-6 col-lg-4 mb-4  " *ngFor="let items of b2bCustomerList; let i=index;">
                         <mat-card class="m-0">
                           
                           <mat-card-content class="customerscard p-0">
@@ -47,21 +47,29 @@
                               <div class="row-wrap d-flex ">
                                 <div class="col-sm-6"></div>
                                 <div class="col-sm-6 ">
-                                  <div class="status" style="background: #FF0C0C;">
-                                    <span>Unverified</span>
+                                  <div class="">
+                                    <!-- <span>Unverified</span> -->
+                                    <div *ngIf="items?.isVerified; else verified">
+                                      <div [ngClass]="{'green': items?.isVerified == true}">verified</div>
+                                    </div>
+                                    
+                                    <ng-template #verified>
+                                      <div [ngClass]="{'red': items?.isVerified != true}">unverified</div>
+                                    
+                                    </ng-template>
                                   </div>
                             
                                 </div>
                               </div>
                               
                             
-                                <div class="p-4">
-                                  <h4 class="heading">{{items.name}}</h4>
-                                  <h4 class="heading">{{items.mobile_no}}</h4>
-                                  <h4 class="heading">{{items.email}}</h4>
-                                  <h4 class="heading">{{items.gst_no}}</h4>
+                                <div class="p-3">
+                                  <h4 class="heading">Name : {{items.name}}</h4>
+                                  <h4 class="heading">Phone : {{items.mobileNo}}</h4>
+                                  <h4 class="heading">Email : {{items.email}}</h4>
+                                  <h4 class="heading">GST : {{items.gst_no}}</h4>
                                       <div class="text-center mt-2">
-                                        <button mat-raised-button color="primary" class="green"> VERIFY </button>
+                                        <button mat-raised-button color="primary" class="verifybtn" (click)="updateVerifyStatus(items._id)"> VERIFY </button>
                                       </div>
                                 </div>
                                 
@@ -72,7 +80,10 @@
                       
                     </div>
                 
-                
+                <div>
+                  <mat-paginator (page)="pageChange($event)" [pageSize]="limit" aria-label="Select page" [length]="totalCount">
+                  </mat-paginator>
+                </div>
                 
                 
                 

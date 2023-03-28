@@ -17,5 +17,7 @@
 // };
 
 export const environment = {
-  baseUrl:"http://ec2-13-127-224-114.ap-south-1.compute.amazonaws.com:8000/",
-}
+  production: false,
+  baseUrl: 'http://ec2-13-127-224-114.ap-south-1.compute.amazonaws.com:8000/',
+  // devURl: ' ec2-13-232-231-11.ap-south-1.compute.amazonaws.com',
+};

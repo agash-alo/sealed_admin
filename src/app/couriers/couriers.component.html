@@ -33,7 +33,7 @@
 
       <!-- </div> -->
       <mat-card>
-        <mat-card-header style="background: #ADADAD;border-radius: 6px 6px 0px 0px;">
+        <mat-card-header class="p-3" style="background: #ADADAD;border-radius: 6px 6px 0px 0px;">
           <div class="search-container">
             <div fxLayout="row wrap">
               <div fxFlex.gt-sm="100" fxFlex="100">
@@ -84,12 +84,12 @@
                   <div class="row">
                     <div class="col-6">
                       <p class="font mt-2 px-2">{{items.name}}<br>
-                        +91{{items.mobileNo}} </p>
+                        +91 {{items.mobileNo}} </p>
                       <!-- {{items.address}} -->
                     </div>
                     <div class="col-6">
                       <div class="text-center">
-                        <img src="{{items.image}}" class="img-fluid">
+                        <img [src]="items?.imgUrl? items.imgUrl :'assets/images/custm-nbb/user_dummy.png'" class="img-fluid">
                       </div>
                     </div>
                   </div>

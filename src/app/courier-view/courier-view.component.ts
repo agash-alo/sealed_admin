@@ -24,9 +24,8 @@ export class CourierViewComponent implements OnInit {
   imagelist: any = [];
   userId: any;
   isVerified: any;
-  // imageUrl: 'src/assets/images/custm-nbb/user_dummy.png' ;
-
-  // imagelist=[];
+  viewshow: boolean = false;
+  viewshowcomplete :boolean =false;
 
   constructor(private router: Router, private apiService: ApiServiceService) {}
 
@@ -40,14 +39,12 @@ export class CourierViewComponent implements OnInit {
     // console.log(this.courierId.isVerified)
     this.getCourierView();
   }
-  toggle = false;
-
 
   verifystatus() {
     // this.isVerified = !this.isVerified;
 
     let verified = {
-      isVerified: true,
+      isVerified: 'true',
       // imgUrl: this.imagelist?.imgUrl,
     };
 
@@ -61,9 +58,10 @@ export class CourierViewComponent implements OnInit {
         }
       }),
       (err) => {
-        this.fileuploadstatus = false;
+        // this.fileuploadstatus = false;
       };
   }
+  
   returntocourier() {
     this.router.navigate(['/couriers']);
   }
@@ -126,48 +124,26 @@ export class CourierViewComponent implements OnInit {
     }
   }
   async uploadFile(files, file, splitted) {
-    // if (this.documentArr.length < 16) {
-    // let fileInput={
-    //   "file":splitted,
-    //   "fileName":file.name,
-    //   "fileSize":file.size,
-    //   "contentType":file.type
-    // }
-    // let fileValue={
-    //   visaTypeCode: step2Det,
-    //   passportNumber: step1Det[0].visaSelection.passportNumber,
-    //   nationalityCode: step1Det[0].visaSelection.nationality,
-    //   documentTypeCode: element.documentCode,
-    //   attachmentDetailsDTO: {
-    //     file: splitted,
-    //     fileName: file.name,
-    //     fileSize: file.size,
-    //     contentType: file.type
-    //   }
-    // }
-    // const formData2:any  = new FormData();
-    // formData2.append('uploadAttachmentRequestDTO', JSON.stringify(fileValue));
-    // formData2.append('file', files);
+  
     const formData1: any = new FormData();
-    // formData1.append('attachmentDetailsDTO', JSON.stringify(fileInput));
-    formData1.append('file', file);
-    // formData1.append('fileName', file.name);
-    // formData1.append('fileSize', file.size);
-    // formData1.append('contentType', file.type);
 
+    formData1.append('file', file);
+    
     await this.apiService.UploadFile(formData1).subscribe(
       (res) => {
         res.data;
         this.imagelist = res.data;
-        // var resp: any = res;
-        // console.log(res)
-        // this.imagelist=res;
-        console.log(this.imagelist?.imgUrl);
-        // console.log('required documents  res ', res);
       },
       (err) => {
         this.fileuploadstatus = false;
       }
     );
+  }
+
+  viewLoadActiveTrips() {
+    this.viewshow = true;
+  }
+  viewLoadCompleteTrips() {
+    this.viewshowcomplete = true;
   }
 }

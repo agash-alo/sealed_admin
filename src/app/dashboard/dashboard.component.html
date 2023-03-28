@@ -3,8 +3,8 @@
     <div class="container-fluid">
 
    
-    <div class=" row d-flex ">
-      <div class="col-md-3 col-sm-12 ">
+    <div class=" row d-flex space justify-content-between">
+      <div class="col-md-2 col-sm-12 ">
         <div class=" text-center my-3">
           <!-- <button type="button" class="btn btn-light buttons">
             <b>  Active trips</b><span class="badge badge-light float-right violet">1</span>
@@ -30,7 +30,7 @@
                 
                 <mat-card-content>
                   <p><b>ONE-WAY-TRIP</b> </p>
-                  <div class="col-6 col-md-7">
+                  <div class="col-6 col-md-12">
                       <div class=" timedate mb-2">
                         <span class="text">Time: 10:15:27 am <br>
                           Date: 26.1.2023</span>
@@ -59,7 +59,7 @@
           </mat-card-content>
         </mat-card>
       </div>
-      <div class="col-md-3 col-sm-12 ">
+      <div class="col-md-2 col-sm-12 ">
         <div class=" text-center my-3">
           <!-- <button type="button" class="btn btn-light buttons">
             <b>  New trips</b><span class="badge badge-light float-right violet">1</span>
@@ -84,7 +84,7 @@
       
       <mat-card-content>
         <p><b>ONE-WAY-TRIP</b> </p>
-        <div class="col-6 col-md-7">
+        <div class="col-6 col-md-12">
             <div class=" timedate mb-2">
               <span class="text">Time: 10:15:27 am <br>
                 Date: 26.1.2023</span>
@@ -148,22 +148,51 @@
           </div>
         
         </div>
-        <mat-card class="m-0">
-          <mat-card-content style="padding: 3rem;">
+      <mat-card class="m-0">
+        <mat-card-content>
+          <div class="  text-center mb-2">
+            <span class="date"><b>25.1.2023 10:15:27 654321</b></span>
+          </div>
       
-            
       
+      
+          <mat-card-content>
+            <p><b>ONE-WAY-TRIP</b> </p>
+            <div class="col-6 col-md-12">
+              <div class=" timedate mb-2">
+                <span class="text">Time: 10:15:27 am <br>
+                  Date: 26.1.2023</span>
+              </div>
+            </div>
+      
+            <p><b>FOOD</b></p>
+            <div class="text mb-1">
+              <span><b>payment method : COD</b></span>
+            </div>
+      
+            <div class="dashboardStatus mb-2">
+              <span class=" text ">Status: Pickup completed</span>
+            </div>
+            <div class="text text-center mb-2">
+              <button mat-button mat-flat-button color="primary" (click)="more_details()"><span class="text"> MORE
+                  DETAILS</span></button>
+      
+            </div>
       
           </mat-card-content>
-        </mat-card>
+      
+      
+          <mat-card-footer class="p-2"></mat-card-footer>
+      
+      
+        </mat-card-content>
+      </mat-card>
       
       
       </div>
       <div class="col-md-2 col-sm-12 ">
-        <div class=" text-center my-3">
-          <!-- <button type="button" class="btn btn-light buttons">
-            <b>New B2B trips</b><span class="badge badge-light float-right violet">0</span>
-          </button> -->
+        <!-- <div class=" text-center my-3">
+          
           <div class=" d-flex justify-content-between " style="background-color: #fff;">
             <div>
           
@@ -186,11 +215,77 @@
       
       
           </mat-card-content>
-        </mat-card>
+        </mat-card> -->
+      <div class=" text-center my-3">
+        <!-- <button type="button" class="btn btn-light buttons">
+                  <b>  New trips</b><span class="badge badge-light float-right violet">1</span>
+                </button> -->
+        <div class=" d-flex justify-content-between " style="background-color: #fff;">
+          <div></div>
+          <div class="">
+            <span class=" trips text-center">
+              <b>New B2B trips</b>
+            </span>
+          </div>
+          <span class="badge text-end" style="background:#21aa47;">1</span>
+        </div>
+      </div>
+      <mat-card class="m-0">
+        <mat-card-content>
+          <div class="  text-center mb-2">
+            <span class="date"><b>25.1.2023 10:15:27 654321</b></span>
+          </div>
       
+      
+      
+          <mat-card-content>
+            <p><b>ONE-WAY-TRIP</b> </p>
+            <div class="col-6 col-md-12">
+              <div class=" timedate mb-2">
+                <span class="text">Time: 10:15:27 am <br>
+                  Date: 26.1.2023</span>
+              </div>
+            </div>
+      
+            <p><b>FOOD</b></p>
+            <div class="text mb-1">
+              <span><b>payment method : COD</b></span>
+            </div>
+      
+            <div class="dashboardStatus mb-2">
+              <span class=" text ">Status: Pickup completed</span>
+            </div>
+            <div class="text text-center mb-2">
+              <button mat-button mat-flat-button color="primary" (click)="more_details()"><span class="text"> MORE
+                  DETAILS</span></button>
+      
+            </div>
+            <div class="mt-1">
+              <mat-form-field appearance="fill">
+                <mat-label>Assign Courier</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="text text-center ">
+              <button mat-button mat-flat-button color="primary" class="moredetails"><span class="text">
+                  Assign</span></button>
+      
+            </div>
+      
+      
+          </mat-card-content>
+          <mat-card-footer class="p-2"></mat-card-footer>
+      
+      
+        </mat-card-content>
+      </mat-card>
       
       </div>
-      <div class="col-md-2 col-sm-12 ">
+      <div class="col-md-3 col-sm-12 ">
         <div class=" text-center my-3">
           <!-- <button type="button" class="btn btn-light buttons">
             <b>Stamp Document Order</b><span class="badge badge-light float-right violet">0</span>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiServiceService } from '../service/api-service.service';
 // import { Verify } from 'crypto';
 
 @Component({
@@ -7,52 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./b2b-customers.component.scss'],
 })
 export class B2bCustomersComponent implements OnInit {
-  customer_list = [
-    {
-      id: '1',
-      name: 'R V SRIRAM',
-      mobile_no: '7987897898',
-      email: 'abc@gmail.com',
-      gst_no: 'xxxxxxxxxxxxxx',
-    },
-    {
-      id: '2',
-      name: 'mugesh',
-      mobile_no: '7987897898',
-      email: 'abc@gmail.com',
-      gst_no: 'xxxxxxxxxxxxxx',
-    },
-    {
-      id: '3',
-      name: 'sanju',
-      mobile_no: '7987897898',
-      email: 'abc@gmail.com',
-      gst_no: 'xxxxxxxxxxxxxx',
-    },
-    {
-      id: '4',
-      name: 'nish',
-      mobile_no: '7987897898',
-      email: 'abc@gmail.com',
-      gst_no: 'xxxxxxxxxxxxxx',
-    },
-    {
-      id: '5',
-      name: 'nishanth',
-      mobile_no: '7987897898',
-      email: 'abc@gmail.com',
-      gst_no: 'xxxxxxxxxxxxxx',
-    },
-  ];
+  
   value: any;
   limit = 9;
   offset = 0;
-  // status:[
-  //   { id: "1"; name: "R V SRIRAM"; status: "Verify"; color:"" },
-  //   {  id: "2"; name: "R V SRIRAM"; status: "Unverify"; }
-  // ]
+  userType: any;
+  b2bCustomerList: any=[];
+  totalCount: any;
 
-  constructor() {}
+  // b2b_id: any;
+  userid: any;
+  _id: any;
+  userId: any;
+  
+
+  constructor(private apiService: ApiServiceService) {}
 
   ngOnInit(): void {
     this.getlistb2bcustomerDetails();
@@ -73,6 +43,37 @@ export class B2bCustomersComponent implements OnInit {
     this.getlistb2bcustomerDetails();
   }
   getlistb2bcustomerDetails() {
+    this.userType = 'masteragent,normaluser';
+    this.apiService
+      .getAllb2bCustomer(this.userType, this.limit, this.offset, this.value)
+      .then((res) => {
+        this.b2bCustomerList = res.data?.data;
+        this.totalCount = res?.data?.totalCount;
+
+        console.log(this.b2bCustomerList);
+
+      })
+      .catch((err) => {});
+  }
+
+
+  updateVerifyStatus(e) {
+
+console.log(e)
+    let verified = {
+      isVerified: 'true',
+    };
     
+    this.apiService
+      .updateb2bcustomer(e, verified)
+      .subscribe((response) => {
+        if (response.code == 200) {
+          console.log('success');
+          this.getlistb2bcustomerDetails();
+        } else {
+        }
+      }),
+      (err) => {};
+    // this.ngOnInit();
   }
 }

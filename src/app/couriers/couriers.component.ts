@@ -42,6 +42,7 @@ export class CouriersComponent implements OnInit {
         this.courier_list = res.data?.data;
         console.log(this.courier_list);
         this.totalCount = res?.data?.totalCount;
+        
       })
       .catch((err) => {});
   }

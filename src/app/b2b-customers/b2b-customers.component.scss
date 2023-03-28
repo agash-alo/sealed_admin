@@ -40,7 +40,7 @@
    
     font-size: 14px;
     font-weight: 600;
-    padding: 4px 6px 0px 6px;
+    padding:6px 15px 0px 15px;
 }
 
 .cardheader {
@@ -112,7 +112,7 @@
     
 }
 
-.green {
+.verifybtn {
     background-color: #21aa47;
     color: white;
     border: none;
@@ -128,13 +128,27 @@
     border: none;
 }
 
-.status {
-    padding:5px 15px;
-    text-align: center;
-    background: #21AA47;
-    color: #F4F4F4;
-    border-radius: 0px 5px 0px 0px;
-    font-size: 14px;
+// .status {
+//     padding:5px 15px;
+//     text-align: center;
+//     background: #21AA47;
+//     color: #F4F4F4;
+//     border-radius: 0px 5px 0px 0px;
+//     font-size: 14px;
+// }
+.red {
+  padding: 5px;
+  text-align: center;
+  background: #ff0c0c;
+  color: #f4f4f4;
+  border-radius: 0px 5px 0px 0px;
+}
+.green {
+  padding: 5px 15px;
+  text-align: center;
+  background: #21aa47;
+  color: #f4f4f4;
+  border-radius: 0px 5px 0px 0px;
 }
 
 

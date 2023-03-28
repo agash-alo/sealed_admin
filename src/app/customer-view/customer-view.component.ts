@@ -10,8 +10,12 @@ import { ApiServiceService } from '../service/api-service.service';
 export class CustomerViewComponent implements OnInit {
   userdetails: any;
   addressDetails;
-  viewshow: boolean =false;
+  viewshow: boolean = false;
   activetrip: any;
+  completetrip: any;
+  value: any;
+  viewshowcomplete: boolean = false;
+
   constructor(private router: Router, private apiService: ApiServiceService) {}
   cususerId: any;
   ngOnInit(): void {
@@ -34,16 +38,35 @@ export class CustomerViewComponent implements OnInit {
       })
       .catch((err) => {});
   }
-  viewDetails()
-  {
-    this.viewshow =true;
-     this.apiService
-       .getListCustomerActiveTrip(this.cususerId)
-       .then((res) => {
-         this.activetrip = res.data.data;
-         console.log(this.activetrip);
-        
-       })
-       .catch((err) => {});
+  loadActiveTrips() {
+    this.viewshow = true;
+    this.apiService
+      .getListCustomerActiveTrip(this.cususerId)
+      .then((res) => {
+        this.activetrip = res.data.data;
+        console.log(this.activetrip);
+      })
+      .catch((err) => {});
+  }
+  loadCompleteTrips() {
+    this.viewshowcomplete = true;
+    this.apiService
+      .getListCustomerCompleteTrip(this.cususerId)
+      .then((res) => {
+        this.completetrip = res.data.data;
+        console.log(this.completetrip);
+      })
+      .catch((err) => {});
+  }
+  searchtrip(e: any) {
+    this.value = e?.target?.value;
+    this.loadActiveTrips();
+    this.loadCompleteTrips();
+  }
+
+  moredetails(){
+    // console.log("hiii");
+    this.router.navigate(['/trip_details']);
+    
   }
 }

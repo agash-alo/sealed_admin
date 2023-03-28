@@ -1,7 +1,6 @@
-
 <div fxLayout="row wrap">
   <div fxFlex.gt-sm="100" fxFlex="100">
-      <!-- <div class="container-fluid">
+    <!-- <div class="container-fluid">
         <div class="row">
           <div class="col-sm-4 col-md-4 col-lg-2 mt-5">
             <div class="card card-settings">
@@ -43,69 +42,165 @@
       
         </div>
       </div> -->
-<mat-card>
-  <mat-card-content>
-      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-        <mat-tab label="Banner Management">
-          <mat-card>
+    <mat-card>
+      <mat-card-content>
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+          <mat-tab label="Banner Management">
+            <mat-card>
 
-          
-          <mat-card-content>
+
+              <mat-card-content class="p-0">
                 <div class="container">
                   <div class="row">
-                    
-                    
-                    <div class="col-4" *ngFor="let items of banner_management">
-                    
+                    <mat-card-title class="p-2">
+                      <h6 class="heading">consumer dashboard</h6>
+                    </mat-card-title>
+                    <div class="col-4" *ngFor="let items of bannerConsumerList; let i= index;">
+
                       <div class=" card-settings mb-3">
                         <div class="col-sm-12">
-                    
+
                           <div class="shadow">
-                            <img src="{{items.image}}" class="card-img-top img-fluid p-3" alt="img">
-                            <div class="card-body text-center">
-                              <a href="#" class="btn enable-btn">Enabled</a>
-                              <a href="#" class="btn remove-btn ms-3">Remove</a>
+                            <div class=" text-center p-2">
+                              <img src="{{items.imageUrl}}" class=" img-fluid" alt="img">
+                            </div>
+                            <div class=" text-end p-1">
+
+                              <button mat-raised-button class="btn enable-btn">
+                                update</button>
+
+                              <button mat-fab color="danger" (click)="deleteBanner(i,bannerConsumerList,'mobile')">
+                                <mat-icon>delete</mat-icon>
+                              </button>
                             </div>
                           </div>
-                    
+
                         </div>
                       </div>
                     </div>
-                    <div class="col-4" >
-                    
+                    <div class="col-4" *ngFor="let items of banner_management">
+                      <div class=" card-settings mb-3" *ngIf='consumerCheck'>
+                        <div class="col-sm-12">
+
+                          <div class="shadow text-center">
+                            <img src={{items.imgUrl}} class="p-2" alt="img">
+                            <div class="card-body text-center">
+                              <button class="file-upload-button">
+                                <input type="file" #fileInput (change)="onChange($event.target.files,'mobile')" />
+                              </button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <mat-card-title class="p-2">
+                      <h6 class="heading">web dashboard</h6>
+                    </mat-card-title>
+                    <div class="col-4" *ngFor="let items of bannerWebList; let i= index;">
+
                       <div class=" card-settings mb-3">
                         <div class="col-sm-12">
-                    
+
+                          <div class="shadow">
+                            <div class=" text-center p-2">
+                              <img src="{{items.imageUrl}}" class=" img-fluid" alt="img">
+                            </div>
+                            <div class=" text-end p-1">
+
+                              <button mat-raised-button class="btn enable-btn">
+                                update</button>
+
+                              <button mat-fab color="danger" (click)="deleteBanner(i,bannerWebList,'web')">
+                                <mat-icon>delete</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4" *ngFor="let items of banner_management">
+                      <div class=" card-settings mb-3" *ngIf='webCheck'>
+                        <div class="col-sm-12">
+
+                          <div class="shadow text-center">
+                            <img src={{items.imgUrl}} class="p-2" alt="img">
+                            <div class="card-body text-center">
+                              <button class="file-upload-button">
+                                <input type="file" #fileInput (change)="onChange($event.target.files,'web')" />
+                              </button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="row">
+                    <mat-card-title class="p-2">
+                      <h6 class="heading"> Notary </h6>
+                    </mat-card-title>
+
+                    <div class="col-4" *ngFor="let items of Notary">
+
+                      <div class=" card-settings mb-3">
+                        <div class="col-sm-12">
+
+                          <div class="shadow">
+                            <img src="{{items.image}}" style="width:100%" height="75%"
+                              class="card-img-top img-fluid p-2" alt="img">
+                            <div class=" text-end p-1">
+
+                              <button mat-raised-button class="btn enable-btn">
+                                update</button>
+
+                              <button mat-fab color="danger">
+                                <mat-icon>delete</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4">
+
+                      <div class=" card-settings mb-3">
+                        <div class="col-sm-12">
+
                           <div class="shadow text-center">
                             <img src="../../assets/images/custm-nbb/upload.png" class=" p-5" alt="img">
                             <div class="card-body text-center">
-                              <a href="#" class="btn enable-btn">upload</a>
-                              <!-- <a href="#" class="btn remove-btn ms-3">upload</a> -->
+                              <input type="file">
+
                             </div>
                           </div>
-                    
+
                         </div>
                       </div>
                     </div>
 
-                  </div>
+                  </div> -->
                 </div>
-          </mat-card-content>
-          </mat-card>
-         
-          
-       
+              </mat-card-content>
+            </mat-card>
 
 
-        </mat-tab>
-        <mat-tab label="Trip charges">Content 2</mat-tab>
-      
-      </mat-tab-group>
-  </mat-card-content>
-</mat-card>
 
-      
+
+
+          </mat-tab>
+          <mat-tab label="Trip charges">Content 2</mat-tab>
+
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+
+
   </div>
 </div>
-
-
