@@ -37,8 +37,8 @@
 }
 
 .waring-content{
-    color: #917647;
-    border: 1px solid #917647;
+    color: #21aa47;
+    border: 1px solid #21aa47;
     padding: 7px;
     border-radius: 10px;
     h4{
@@ -59,4 +59,12 @@
   background: #ffffff !important;
 box-shadow:none !important;
 border-radius: 5px;
+}
+.green{
+    background: #21aa47 !important;
+    border:1px solid #21aa47;
+}
+
+ .mat-raised-button, .mat-fab, .mat-mini-fab {
+    color: #fff;
 }

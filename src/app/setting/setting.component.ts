@@ -13,8 +13,8 @@ export class SettingComponent implements OnInit {
     // { id: '1', imgUrl: '../../assets/images/custm-nbb/upload.png' },
   ];
   Notary = [
-    { id: '1', image: '../../assets/images/custm-nbb/settings-banner.png' },
-    { id: '2', image: '../../assets/images/custm-nbb/settings-banner.png' },
+    // { id: '1', image: '../../assets/images/custm-nbb/settings-banner.png' },
+    // { id: '2', image: '../../assets/images/custm-nbb/settings-banner.png' },
     { id: '1', imgUrl: '../../assets/images/custm-nbb/upload.png' },
   ];
   fileuploadstatus: boolean | undefined;
@@ -29,6 +29,8 @@ export class SettingComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBannerList('mobile');
+    this.getBannerList('web');
+    this.getBannerList('notary');
   }
 
   async onChange(files, type) {
@@ -103,7 +105,7 @@ export class SettingComponent implements OnInit {
   notaryCheck = true;
 
   async getBannerList(type) {
-    console.log(type)
+    console.log(type);
     this.apiService
       .getBannerList(type)
       .then((res) => {
@@ -114,20 +116,19 @@ export class SettingComponent implements OnInit {
           } else {
             this.consumerCheck = true;
           }
-
+         
           console.log('this.bannerConsumerList', this.bannerConsumerList);
         }
         if (type == 'web') {
-            console.log(this.bannerWebList);
+          console.log(this.bannerWebList);
           this.bannerWebList = res?.data?.data ? res.data.data : [];
-        
           if (this.bannerWebList?.length >= 3) {
             this.webCheck = false;
           } else {
             this.webCheck = true;
           }
-
-          console.log('this.bannerConsumerList', this.bannerConsumerList);
+          
+          console.log('this.bannerWebList', this.bannerWebList);
         }
         if (type == 'notary') {
           this.bannerNotaryList = res?.data?.data ? res.data.data : [];
@@ -136,7 +137,7 @@ export class SettingComponent implements OnInit {
           } else {
             this.notaryCheck = true;
           }
-
+          
           console.log('this.bannerConsumerList', this.bannerConsumerList);
         }
       })

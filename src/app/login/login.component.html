@@ -2,7 +2,7 @@
     <p style="color: #F39201;font-weight: 600;"> Loading... </p>
 </ngx-spinner>
 <div class="login-register"
-    style="background-image:url(assets/images/welcome-image.jpeg);background-size: cover;background-position: top;">
+    style="background-size: cover;background-position: top;background :#21aa47d4">
     <div class="col-lg-4 col-md-5 col-sm-12 login_main_box">
         <div class="login-register">
             <mat-card class="m-t-10 w-100">
@@ -11,7 +11,7 @@
 
                         <div class="login_box">
                             <div class="text-center login-head">
-                                <img alt="homepage" src="assets/images/right-calories.jpeg">
+                                <img alt="homepage" src="../../assets/images/sealed-logo.png">
                                 <h4 class="m-t-0 py-4">Change Temporary Password</h4>
                             </div>
 
@@ -54,7 +54,7 @@
                     <form *ngIf="!isTempPassChange" [formGroup]="form" (ngSubmit)="loginAuth()">
                         <div class="login_box">
                             <div class="text-center login-head">
-                                <img alt="homepage" src="assets/images/right-calories.jpeg">
+                                <img alt="homepage" src="../../assets/images/sealed-logo.png">
                                 <h4 class="m-t-0 pt-4 ">Log In </h4>
 
 
@@ -86,8 +86,8 @@
                             </div>
 
                             <div class="login-btn">
-                                <button type="submit" mat-raised-button color="warn" class=""><i
-                                        class="fa-solid fa-right-to-bracket"></i> Log In</button>
+                                <button type="submit" mat-raised-button  class="green"><i
+                                        class="fa-solid fa-right-to-bracket"></i> Log in</button>
                             </div>
                         </div>
                     </form>

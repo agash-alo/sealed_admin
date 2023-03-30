@@ -29,6 +29,7 @@ export class CustomersComponent implements OnInit {
         this.customer_list = res.data?.data;
         this.totalCount = res?.data?.totalCount;
         console.log(this.customer_list);
+        
       })
       .catch((err) => {});
   }
@@ -48,10 +49,9 @@ export class CustomersComponent implements OnInit {
   }
   // navigate to customer_view
   customersView(i: any) {
-    localStorage.setItem(
-      'userViewId',
-      JSON.stringify(this?.customer_list?.[i]?._id)
-    );
+
+    localStorage.setItem('userViewId',JSON.stringify(this?.customer_list?.[i]?._id));
+   
     this.router.navigate(['/customer-view'])
   }
 }

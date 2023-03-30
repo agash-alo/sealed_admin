@@ -25,7 +25,9 @@ export class CourierViewComponent implements OnInit {
   userId: any;
   isVerified: any;
   viewshow: boolean = false;
-  viewshowcomplete :boolean =false;
+  viewshowcomplete: boolean = false;
+  name: any;
+  email: any;
 
   constructor(private router: Router, private apiService: ApiServiceService) {}
 
@@ -38,13 +40,16 @@ export class CourierViewComponent implements OnInit {
     console.log(this.courierId);
     // console.log(this.courierId.isVerified)
     this.getCourierView();
+    // this.verifystatus();
   }
 
   verifystatus() {
-    // this.isVerified = !this.isVerified;
+    
 
     let verified = {
       isVerified: 'true',
+      name: this.courierdetails?.name,
+      email: this.courierdetails?.email,
       // imgUrl: this.imagelist?.imgUrl,
     };
 
@@ -60,8 +65,9 @@ export class CourierViewComponent implements OnInit {
       (err) => {
         // this.fileuploadstatus = false;
       };
+    this.ngOnInit();
   }
-  
+
   returntocourier() {
     this.router.navigate(['/couriers']);
   }
@@ -124,11 +130,10 @@ export class CourierViewComponent implements OnInit {
     }
   }
   async uploadFile(files, file, splitted) {
-  
     const formData1: any = new FormData();
 
     formData1.append('file', file);
-    
+
     await this.apiService.UploadFile(formData1).subscribe(
       (res) => {
         res.data;
@@ -145,5 +150,10 @@ export class CourierViewComponent implements OnInit {
   }
   viewLoadCompleteTrips() {
     this.viewshowcomplete = true;
+  }
+
+  moredetails() {
+    console.log('wel');
+    this.router.navigate(['/trip_details']);
   }
 }

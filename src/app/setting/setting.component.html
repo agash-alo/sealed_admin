@@ -55,14 +55,14 @@
                     <mat-card-title class="p-2">
                       <h6 class="heading">consumer dashboard</h6>
                     </mat-card-title>
-                    <div class="col-4" *ngFor="let items of bannerConsumerList; let i= index;">
+                    <div class="col-lg-4 col-md-4 col-sm-12" *ngFor="let items of bannerConsumerList; let i= index;">
 
                       <div class=" card-settings mb-3">
                         <div class="col-sm-12">
 
-                          <div class="shadow">
+                          <div class="shadow" style="height:300px !important">
                             <div class=" text-center p-2">
-                              <img src="{{items.imageUrl}}" class=" img-fluid" alt="img">
+                              <img src="{{items.imageUrl}}" class=" img-fluid" style="width:100% ;height: 207px !important;" alt="img">
                             </div>
                             <div class=" text-end p-1">
 
@@ -78,7 +78,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-4" *ngFor="let items of banner_management">
+                    <div class="col-lg-4 col-md-4 col-sm-12" *ngFor="let items of banner_management">
                       <div class=" card-settings mb-3" *ngIf='consumerCheck'>
                         <div class="col-sm-12">
 
@@ -101,14 +101,14 @@
                     <mat-card-title class="p-2">
                       <h6 class="heading">web dashboard</h6>
                     </mat-card-title>
-                    <div class="col-4" *ngFor="let items of bannerWebList; let i= index;">
+                    <div class="col-lg-4 col-md-4 col-sm-12" *ngFor="let items of bannerWebList; let i= index;">
 
                       <div class=" card-settings mb-3">
                         <div class="col-sm-12">
 
                           <div class="shadow">
                             <div class=" text-center p-2">
-                              <img src="{{items.imageUrl}}" class=" img-fluid" alt="img">
+                              <img src="{{items.imageUrl}}" class=" img-fluid"style="width:100% ;height: 207px !important;" alt="img">
                             </div>
                             <div class=" text-end p-1">
 
@@ -141,6 +141,52 @@
                       </div>
                     </div>
                   </div>
+
+                  <div class="row">
+                    <mat-card-title class="p-2">
+                      <h6 class="heading">Notary</h6>
+                    </mat-card-title>
+                    <div class="col-lg-4 col-md-4 col-sm-12" *ngFor="let items of bannerNotaryList; let i= index;">
+                  
+                      <div class=" card-settings mb-3">
+                        <div class="col-sm-12">
+                  
+                          <div class="shadow">
+                            <div class=" text-center p-2">
+                              <img src="{{items.imageUrl}}" class=" img-fluid"style="width:100% ;height: 207px !important;" alt="img">
+                            </div>
+                            <div class=" text-end p-1">
+                  
+                              <button mat-raised-button class="btn enable-btn">
+                                update</button>
+                  
+                              <button mat-fab color="danger" (click)="deleteBanner(i,bannerNotaryList,'web')">
+                                <mat-icon>delete</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+                  
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-4" *ngFor="let items of banner_management">
+                      <div class=" card-settings mb-3" *ngIf='notaryCheck'>
+                        <div class="col-sm-12">
+                  
+                          <div class="shadow text-center">
+                            <img src={{items.imgUrl}} class="p-2" alt="img">
+                            <div class="card-body text-center">
+                              <button class="file-upload-button">
+                                <input type="file" #fileInput (change)="onChange($event.target.files,'web')" />
+                              </button>
+                            </div>
+                          </div>
+                  
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <!-- <div class="row">
                     <mat-card-title class="p-2">
                       <h6 class="heading"> Notary </h6>

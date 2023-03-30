@@ -40,58 +40,71 @@
                       <button mat-raised-button color="primary" (click)="loadActiveTrips()"
                         class="green mb-2">Load</button>
                     </div>
-                    <div *ngIf="viewshow == true">
-                      <mat-card class="m-0 mb-3" *ngFor="let item of activetrip; let i = index">
-                        <mat-card-content class="p-0">
-                          <div class=" trip p-1">
-                            <div class="my-2">
-                              <h6 class="text-center"><b>{{item?.createdAt | date}} {{item?.createdAt |
-                                  date:'mediumTime'}}  </b></h6>
-                            </div>
-                            <div class="px-1 ">
-                              <div class="col-sm-8 col-md-8">
-                                <h5 class="tripheader">{{item?.deliveryType}}</h5>
-                                <div class="green p-2 mb-2">
-                                  <h6> Time: {{item?.createdAt | date:'mediumTime'}} </h6>
-                                  <h6>Date: {{item?.createdAt | date}} </h6>
-                                </div>
-                                <h6>Trip Distance: {{item?.totalKms}}</h6>
-                              </div>
-                              <div class="row p-2">
-                                <div class="col-sm-4 col-md-6  col-lg-6 p-1">
-                                  <div class="green p-1">
-                                    <h6 style="font-size: 12px;"><b>FROM</b></h6>
-                                    <h6 style="font-size: 12px;">{{item?.pickupAddress[i]?.street}}
-                                      , {{item?.pickupAddress[i]?.city}} ,<br> {{item?.pickupAddress[i]?.state}} ,
-                                      {{item?.pickupAddress[i]?.country}} ,
-                                      {{item?.pickupAddress[i]?.postalCode}} .
-                                    </h6>
-                                  </div>
-                                </div>
-                                <div class="col-sm-4 col-md-6  col-lg-6 p-1">
-                                  <div class="green p-1">
-                                    <h6 style="font-size: 12px;"><b>TO </b></h6>
-                                    <h6 style="font-size: 12px;"> {{item?.dropAddress[i]?.street}} ,
-                                      {{item?.dropAddress[i]?.city}}
-                                      {{item?.dropAddress[i]?.state}} , {{item?.dropAddress[i]?.country}} ,
-                                      {{item?.dropAddress[i]?.postalCode}} .
+                    <!-- <div *ngIf="activetrip?.length === 0">No records found</div> -->
+                    <div *ngIf="activetrip?.length ">
 
 
-                                    </h6>
+                      <div *ngIf="viewshow == true">
+                        <mat-card class="m-0 mb-3" *ngFor="let item of activetrip; let i = index">
+                          <mat-card-content class="p-0">
+                            <div class=" trip p-1">
+                              <div class="my-2">
+                                <h6 class="text-center"><b>{{item?.createdAt | date}} {{item?.createdAt |
+                                    date:'mediumTime'}} </b></h6>
+                              </div>
+                              <div class="px-1 ">
+                                <div class="col-sm-8 col-md-8">
+                                  <h5 class="tripheader">{{item?.deliveryType}}</h5>
+                                  <div class="green p-2 mb-2">
+                                    <h6> Time: {{item?.createdAt | date:'mediumTime'}} </h6>
+                                    <h6>Date: {{item?.createdAt | date}} </h6>
+                                  </div>
+                                  <h6>Trip Distance: {{item?.totalKms}}</h6>
+                                </div>
+                                <div class="row p-2">
+                                  <div class="col-sm-4 col-md-6  col-lg-6 p-1">
+                                    <div class="green p-1">
+                                      <h6 style="font-size: 12px;"><b>FROM</b></h6>
+                                      <h6 style="font-size: 12px;">{{item?.pickupAddress[i]?.street}}
+                                        , {{item?.pickupAddress[i]?.city}} ,<br> {{item?.pickupAddress[i]?.state}} ,
+                                        {{item?.pickupAddress[i]?.country}} ,
+                                        {{item?.pickupAddress[i]?.postalCode}} .
+                                      </h6>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-4 col-md-6  col-lg-6 p-1">
+                                    <div class="green p-1">
+                                      <h6 style="font-size: 12px;"><b>TO </b></h6>
+                                      <h6 style="font-size: 12px;"> {{item?.dropAddress[i]?.street}} ,
+                                        {{item?.dropAddress[i]?.city}}
+                                        {{item?.dropAddress[i]?.state}} , {{item?.dropAddress[i]?.country}} ,
+                                        {{item?.dropAddress[i]?.postalCode}} .
+
+
+                                      </h6>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                              <h6>Courier assigned: R V SRIRAM</h6>
-                              <h6>Trip Cost: {{item?.amountDetails?.finalAmount}}₹</h6>
-                              <h6>Payment: Cash On Delivery</h6>
-                              <div class="text-center my-3">
-                                <button mat-raised-button class="blue px-3" (click)="moredetails()">MORE DETAILS</button>
+                                <h6>Courier assigned: R V SRIRAM</h6>
+                                <h6>Trip Cost: {{item?.amountDetails?.finalAmount}}₹</h6>
+                                <h6>Payment: Cash On Delivery</h6>
+                                <div class="text-center my-3">
+                                  <button mat-raised-button class="blue px-3" (click)="moredetails()">MORE
+                                    DETAILS</button>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </mat-card-content>
-                      </mat-card>
+                          </mat-card-content>
+                        </mat-card>
+
+
+
+                      </div>
                     </div>
+                    <div *ngIf="!activetrip?.length">
+                      <tr>No results found.</tr>
+                    </div>
+
                   </div>
                   <div class="col-sm-6 col-md-6 col-lg-6 mb-2 completetrip">
                     <div>
@@ -100,13 +113,13 @@
                         class="green mb-2">Load</button>
                     </div>
                     <div *ngIf="viewshowcomplete == true">
-                      
-                      <mat-card class="m-0 mb-3"  *ngFor="let item of completetrip; let i = index">
+
+                      <mat-card class="m-0 mb-3" *ngFor="let item of completetrip; let i = index">
                         <mat-card-content class="p-0">
                           <div class=" trip p-1">
                             <div class="my-2">
                               <h6 class="text-center"><b>{{item?.createdAt | date}} {{item?.createdAt |
-                                  date:'mediumTime'}}  </b></h6>
+                                  date:'mediumTime'}} </b></h6>
                             </div>
                             <div class="px-1 ">
                               <div class="col-sm-8 col-md-8">
@@ -145,7 +158,8 @@
                               <h6>Trip Cost: {{item?.amountDetails?.finalAmount}}₹</h6>
                               <h6>Payment: Cash On Delivery</h6>
                               <div class="text-center my-3">
-                                <button mat-raised-button class="blue px-3" (click)="moredetails()">MORE DETAILS</button>
+                                <button mat-raised-button class="blue px-3" (click)="moredetails(i)">MORE
+                                  DETAILS</button>
                               </div>
                             </div>
                           </div>
@@ -161,7 +175,7 @@
 
         </div>
         <div class="col-sm-12 col-md-12 col-lg-5">
-          <mat-card class="m-0">
+          <mat-card class="m-0 h-50">
             <mat-card-content>
               <div class="" *ngFor="let items of userdetails?.addressDetails">
                 <h4 class="text-center heading"> Customer Address</h4>
@@ -173,11 +187,11 @@
                       {{items.address.city}} ,{{items.address.state}} {{items.address.country}}
                       {{items.address.postalCode}}
                     </p>
-                    <p class="header">
+                    <!-- <p class="header">
                       44, 2nd Cross Street, near Jaya School,
                       CIT Nagar West, CIT Nagar,
                       Chennai, Tamil Nadu 600024,
-                      India</p>
+                      India</p> -->
                     <p class="header">
                       <b> Contact Person:</b>{{items.address.contactPerson}}
                       <br>

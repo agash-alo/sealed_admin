@@ -8,19 +8,19 @@ import { ApiServiceService } from '../service/api-service.service';
   styleUrls: ['./b2b-customers.component.scss'],
 })
 export class B2bCustomersComponent implements OnInit {
-  
   value: any;
   limit = 9;
   offset = 0;
   userType: any;
-  b2bCustomerList: any=[];
+  b2bCustomerList: any = [];
   totalCount: any;
 
   // b2b_id: any;
   userid: any;
   _id: any;
   userId: any;
-  
+  name: any;
+  email: any;
 
   constructor(private apiService: ApiServiceService) {}
 
@@ -29,7 +29,7 @@ export class B2bCustomersComponent implements OnInit {
   }
   pageChange(e): void {
     this.offset = this.paginationOffset(e['pageIndex'], e['pageSize']);
-    console.log(this.offset, 'iiiii');
+    // console.log(this.offset, 'iiiii');
     this.getlistb2bcustomerDetails();
   }
   paginationOffset(currentPage, itemsPerPage): number {
@@ -39,7 +39,7 @@ export class B2bCustomersComponent implements OnInit {
   // search filter
   searchCustomer(e: any) {
     this.value = e?.target?.value;
-    console.log(this.value);
+    // console.log(this.value);
     this.getlistb2bcustomerDetails();
   }
   getlistb2bcustomerDetails() {
@@ -51,28 +51,28 @@ export class B2bCustomersComponent implements OnInit {
         this.totalCount = res?.data?.totalCount;
 
         console.log(this.b2bCustomerList);
-
       })
       .catch((err) => {});
   }
 
-
   updateVerifyStatus(e) {
-
-console.log(e)
+    // console.log(e);
     let verified = {
       isVerified: 'true',
+      name: this.b2bCustomerList?.name,
+      email: this.b2bCustomerList?.email,
     };
-    
-    this.apiService
-      .updateb2bcustomer(e, verified)
-      .subscribe((response) => {
-        if (response.code == 200) {
-          console.log('success');
-          this.getlistb2bcustomerDetails();
-        } else {
-        }
-      }),
+    console.log(this.b2bCustomerList?.name);
+    this.apiService.updateb2bcustomer(e, verified).subscribe((response) => {
+      console.log(response.data.email);
+      this.b2bCustomerList = response.data;
+
+      if (response.code == 200) {
+        console.log('success');
+        this.getlistb2bcustomerDetails();
+      } else {
+      }
+    }),
       (err) => {};
     // this.ngOnInit();
   }
