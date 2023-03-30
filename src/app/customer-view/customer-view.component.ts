@@ -23,8 +23,17 @@ export class CustomerViewComponent implements OnInit {
       ? JSON.parse(localStorage.getItem('userViewId') || '')
       : '';
     this.getUserViewDetails();
+    this.loadActiveTrips();
+    this.loadCompleteTrips();
   }
-
+  load = false;
+  loadActive() {
+    this.load = true;
+  }
+  load1 = false;
+  loadComplete() {
+    this.load1 = true;
+  }
   userView: any;
   getUserViewDetails() {
     console.log('fd', this.cususerId);
@@ -44,7 +53,7 @@ export class CustomerViewComponent implements OnInit {
       .getListCustomerActiveTrip(this.cususerId)
       .then((res) => {
         this.activetrip = res.data.data;
-        // console.log(this.activetrip.length);
+        console.log(this.activetrip);
       })
       .catch((err) => {});
   }
@@ -65,12 +74,6 @@ export class CustomerViewComponent implements OnInit {
   }
 
   moredetails(i: any) {
-    console.log(i);
-    localStorage.setItem(
-      'userViewTripId',
-      JSON.stringify(this.activetrip?.[i]?._id)
-    );
-    console.log(this?.activetrip?.[i]?._id);
-    this.router.navigate(['/trip_details']);
+    this.router.navigate(['/trip_details',{id: i?._id}]);
   }
 }

@@ -56,16 +56,14 @@ export class B2bCustomersComponent implements OnInit {
   }
 
   updateVerifyStatus(e) {
-    // console.log(e);
-    let verified = {
+    let payload = {
       isVerified: 'true',
-      name: this.b2bCustomerList?.name,
-      email: this.b2bCustomerList?.email,
+      name: e.name,
+      email: e.email,
     };
-    console.log(this.b2bCustomerList?.name);
-    this.apiService.updateb2bcustomer(e, verified).subscribe((response) => {
-      console.log(response.data.email);
+    this.apiService.updateb2bcustomer(e._id,payload).subscribe((response) => {
       this.b2bCustomerList = response.data;
+      console.log(this.b2bCustomerList.name)
 
       if (response.code == 200) {
         console.log('success');

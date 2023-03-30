@@ -28,6 +28,8 @@ export class CourierViewComponent implements OnInit {
   viewshowcomplete: boolean = false;
   name: any;
   email: any;
+  activetrip: any;
+  completetrip: any;
 
   constructor(private router: Router, private apiService: ApiServiceService) {}
 
@@ -40,12 +42,12 @@ export class CourierViewComponent implements OnInit {
     console.log(this.courierId);
     // console.log(this.courierId.isVerified)
     this.getCourierView();
+    this.loadActiveTrips();
+    this.loadCompleteTrips();
     // this.verifystatus();
   }
 
   verifystatus() {
-    
-
     let verified = {
       isVerified: 'true',
       name: this.courierdetails?.name,
@@ -143,17 +145,48 @@ export class CourierViewComponent implements OnInit {
         this.fileuploadstatus = false;
       }
     );
+    this.ngOnInit();
   }
 
-  viewLoadActiveTrips() {
-    this.viewshow = true;
-  }
-  viewLoadCompleteTrips() {
-    this.viewshowcomplete = true;
-  }
+  // viewLoadActiveTrips() {
+  //   this.viewshow = true;
+  // }
+  // viewLoadCompleteTrips() {
+  //   this.viewshowcomplete = true;
+  // }
 
-  moredetails() {
+  moredetails(i: any) {
     console.log('wel');
-    this.router.navigate(['/trip_details']);
+    this.router.navigate(['/trip_details, { id: i?._id }']);
+  }
+
+  loadActiveTrips() {
+    this.viewshow = true;
+    this.apiService
+      .getlistCourierActiveTrip(this.courierId)
+      .then((res) => {
+        this.activetrip = res.data.data;
+        console.log(this.activetrip);
+      })
+      .catch((err) => {});
+  }
+  loadCompleteTrips() {
+    this.viewshowcomplete = true;
+    this.apiService
+      .getlistCourierCompleteTrip(this.courierId)
+      .then((res) => {
+        this.completetrip = res.data.data;
+        console.log(this.completetrip);
+      })
+      .catch((err) => {});
+  }
+
+  load = false;
+  loadActive() {
+    this.load = true;
+  }
+  load1 = false;
+  loadComplete() {
+    this.load1 = true;
   }
 }

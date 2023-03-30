@@ -1,37 +1,39 @@
 <div fxLayout="row wrap">
   <div fxFlex.gt-sm="100" fxFlex="100">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6 col-lg-6 col-sm-12">
-            <div style="padding: 10px 0px;">
-              <!-- <mat-card-title>Trip Details</mat-card-title> -->
-              <h6 class=" px-3">Trip Details</h6>
-            </div>
-           
-      <mat-card>
-        <mat-card-content>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-lg-6 col-sm-12">
+          <div style="padding: 10px 0px;">
+            <!-- <mat-card-title>Trip Details</mat-card-title> -->
+            <h6 class=" px-3">Trip Details</h6>
+          </div>
+
+          <mat-card>
+            <mat-card-content>
               <div class="row ">
                 <div class="text-center header mb-3">
-                  One way trip
+                  {{tripDetails?.deliveryType}}
                 </div>
                 <div class="col-7">
-                  <p>Food</p>
+                  <p>{{tripDetails?.selectedPackage}}</p>
                 </div>
                 <div class="col-5">
-                  <p>Distance: 2Km</p>
+                  <p>Distance: {{tripDetails?.totalKms}} km</p>
                 </div>
               </div>
               <div class="row ">
                 <div class="col-7">
-                  <p>Time: 12.30:18am<br><span>Date: 27.01.2023</span></p>
+                  <p>Time: {{tripDetails?.createdAt | date:'mediumTime'}}<br>
+                    <span>Date: {{tripDetails?.createdAt |date}}</span>
+                  </p>
                 </div>
                 <div class="col-5">
-                  <p>payment: COD</p>
+                  <p>payment: {{tripDetails?.paymentDetails?.paymentMode}}</p>
                 </div>
               </div>
               <div class="row ">
                 <div class="col-7">
-                  <p>Status: pickup completed</p>
+                  <p>Status: {{tripDetails?.orderStatus}}</p>
                 </div>
                 <div class="col-5">
                   <p>Secure pin: 1234</p>
@@ -39,23 +41,23 @@
               </div>
               <div class="row ">
                 <div class="col-6">
-                  <p>Cost: 35₹</p>
+                  <p>Cost: {{tripDetails?.amountDetails?.finalAmount}}₹</p>
                 </div>
                 <div class="col-6"></div>
               </div>
-      
-      </mat-card-content>
-      </mat-card>
-            
-            
-              <mat-card >
-                <mat-card-content class="p-3 my-3">
+
+            </mat-card-content>
+          </mat-card>
+
+
+          <mat-card>
+            <mat-card-content class="p-3 my-3">
               <div class="text-center header mb-2">
                 Courier Information
               </div>
               <div class="row mb-3">
-      
-      
+
+
                 <div class="col-7">
                   <div class="row">
                     <div class="col-6 pe-0">
@@ -65,12 +67,12 @@
                     </div>
                     <div class="col-6  pe-0">
                       <td class="">
-                        <p>xxxxxxxxxxx</p>
+                        <p>{{tripDetails?.assigneeDetails?.name}}</p>
                       </td>
                     </div>
-      
+
                   </div>
-      
+
                   <div class="row ">
                     <div class="col-6  pe-0">
                       <td class="">
@@ -79,10 +81,10 @@
                     </div>
                     <div class="col-6  pe-0">
                       <td class="">
-                        <p>9876543210</p>
+                        <p>{{tripDetails?.assigneeDetails?.mobileNo}}</p>
                       </td>
                     </div>
-      
+
                   </div>
                   <div class="row ">
                     <div class="col-6 pe-0">
@@ -92,42 +94,51 @@
                     </div>
                     <div class="col-6 pe-0">
                       <td class="">
-                        <p>Verified</p>
+                        <p>{{tripDetails?.assigneeDetails?.isVerified}}</p>
                       </td>
                     </div>
-      
+
                   </div>
-      
+
                 </div>
-      
+
                 <div class="col-5">
                   <div class="text-center">
-                    <img src="assets\images\custm-nbb\user_dummy.png" alt="user_image" style="width: 80px;height:80px;">
+                    <img
+                      [src]="tripDetails?.assigneeDetails?.imgUrl? tripDetails?.assigneeDetails?.imgUrl :'assets/images/custm-nbb/user_dummy.png'"
+                      alt="" style="width: 80px;height:80px;border-radius:50%">
+                    <!-- <img src="{{tripDetails?.assigneeDetails?.imageUrl}}" alt="user_image"
+                      style="width: 80px;height:80px;"> -->
                   </div>
                 </div>
               </div>
-      </mat-card-content>
-      </mat-card>
-            
+            </mat-card-content>
+          </mat-card>
+
+        </div>
+        <div class="col-md-6 col-lg-6 col-sm-12">
+          <div style="padding: 10px 0px;">
+            <h6 class=" px-3">Details</h6>
           </div>
-          <div class="col-md-6 col-lg-6 col-sm-12">
-            <div style="padding: 10px 0px;">
-              <h6 class=" px-3">Details</h6>
-            </div>
-      <mat-card>
-        <mat-card-content>
-            <div class=" address_details ">
-              <div class="row">
-                <div class="col-12 mb-3">
-                  <b>Pickup info</b><br>
-                  <span class="address">
-                    ANYA, Old no. 12, New no. 23, Subrayan Main Street ,
-                    Otteri, chennai- 12
-                  </span>
+          <mat-card>
+            <mat-card-content>
+              <div class=" address_details ">
+                <div class="row">
+                  <div class="col-12 mb-3">
+                    <b>Pickup info</b><br>
+                    {{tripDetails?.pickupAddress[0]?.addressType}}
+                    <span class="address">
+                      {{tripDetails?.pickupAddress[0]?.street}} {{tripDetails?.pickupAddress[0]?.city}}
+                      {{tripDetails?.pickupAddress[0]?.state}} {{tripDetails?.pickupAddress[0]?.country}}
+                      {{tripDetails?.pickupAddress[0]?.postalCode}}
+                    </span>
+                  </div>
                 </div>
-              </div>
-      
-              <!-- <div class="row">
+                <div class="col-12 mb-3">
+                  <span><b> Contact Person :</b>{{tripDetails?.pickupAddress[0]?.contactPerson}}<br>
+                    <b>Contact Person Number :</b>{{tripDetails?.pickupAddress[0]?.contactPersonNumber}}</span>
+                </div>
+                <!-- <div class="row">
                 <div class="col-12 mb-3">
                   <b>Pick-up geolocation</b><br>
                   <span class="address">
@@ -136,18 +147,20 @@
                   </span>
                 </div>
               </div> -->
-      
-              <div class="row">
-                <div class="col-12 mb-3">
-                  <b>Drop-off info</b><br>
-                  <span class="address">
-                    ANYA, Old no. 12, New no. 23, Subrayan Main Street ,
-                    Otteri, chennai- 12
-                  </span>
+
+                <div class="row">
+                  <div class="col-12 mb-3">
+                    <b>Drop-off info</b><br>
+                    {{tripDetails?.dropAddress[0]?.addressType}}
+                    <span class="address">
+                      {{tripDetails?.dropAddress[0]?.street}} {{tripDetails?.dropAddress[0]?.city}}
+                      {{tripDetails?.dropAddress[0]?.state}} {{tripDetails?.dropAddress[0]?.country}}
+                      {{tripDetails?.dropAddress[0]?.postalCode}}
+                    </span>
+                  </div>
                 </div>
-              </div>
-      
-              <!-- <div class="row">
+
+                <!-- <div class="row">
                 <div class="col-12 ">
                   <b>Drop-off geolocation</b><br>
                   <span class="address">
@@ -156,129 +169,134 @@
                   </span>
                 </div>
               </div> -->
+                <div class="row">
+
+                  <div class="col-12 mb-3">
+                    <span><b>Contact Person :</b>{{tripDetails?.dropAddress[0]?.contactPerson}}<br>
+                      <b>Contact Person Number :</b>{{tripDetails?.dropAddress[0]?.contactPersonNumber}}</span>
+                  </div>
+                  <div class="col-12 mb-3">
+                    <b>Total Distance :</b><br>
+                    <span class="address">
+                      {{tripDetails?.totalKms}} km
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid p-0 mt-2">
+      <div id="map" class=" map-container ">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31593.893668317476!2d77.4176768!3d8.1788928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b04f1405923e1fb%3A0xdded763ce70bbd4d!2sALO%20GROUPS%20(Alo%20info-tech)!5e0!3m2!1sen!2sin!4v1676274854735!5m2!1sen!2sin"
+          width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+    </div>
+
+
+
+
+    <div class="container-fluid ">
+
+      <div class="trip my-2">
+        <h6 class="px-3 ">Delivery Logs</h6>
+      </div>
+
       <div class="row">
-        <div class="col-12 mb-3">
-          <b>Total Distance :</b><br>
-          <span class="address">
-            5km
-          </span>
-        </div>
-      </div>
-            </div>
-</mat-card-content>
-</mat-card>
-          </div>
-        </div>
-      </div>
-      
-      <div class="container-fluid p-0 mt-2">
-        <div id="map" class=" map-container ">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31593.893668317476!2d77.4176768!3d8.1788928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b04f1405923e1fb%3A0xdded763ce70bbd4d!2sALO%20GROUPS%20(Alo%20info-tech)!5e0!3m2!1sen!2sin!4v1676274854735!5m2!1sen!2sin"
-            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      
-      </div>
-      
-      
-      
-      
-      <div class="container-fluid ">
-      
-        <div class="trip my-2">
-          <h6 class="px-3 ">Delivery Logs</h6>
-        </div >
-      
-        <div class="row">
-          <div class="col-sm-6 col-md-6 col-lg-3">
-            <mat-card>
+        <div class="col-sm-6 col-md-6 col-lg-3">
+          <mat-card>
             <mat-card-content class="">
               <div class="tripdetail">
 
-              
-<h4 class="header "><b>Trip Created</b></h4>
-<div class="mt-2">
-  <h4 class="datetime ">Jan 27, 2023 <br>
-    11:43:22 AM</h4>
-</div>
-</div>
-            </mat-card-content>
-            </mat-card>
-            
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-3 ">
-<mat-card>
-  <mat-card-content class="">
 
-          <div class="tripdetail">
-            
-              <h4 class="header  "><b>Trip active Courier
-                  has been assigned</b></h4>
-              <div class="mt-2">
-                <h4 class="datetime ">Jan 27, 2023 <br>
-                  11:43:22 AM</h4>
-              </div>
-            </div>
-            </mat-card-content>
-            </mat-card>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-3">
-            <mat-card>
-              <mat-card-content class=" ">
-          <div class="tripdetail">
-              <h4 class="header  "><b>In Progress</b></h4>
-              <div class="mt-2">
-                <h4 class="datetime  ">Jan 27, 2023 <br>
-                  11:43:22 AM</h4>
-              </div>
+                <h4 class="header "><b>Trip Created</b></h4>
+                <div class="mt-2">
+                  <h4 class="datetime ">{{tripDetails?.createdAt| date }} <br>
+                    {{tripDetails?.createdAt | date:'mediumTime' }}</h4>
+                </div>
               </div>
             </mat-card-content>
-            </mat-card>
-          </div>
-          <div class="col-sm-6 col-md-6 col-lg-3 ">
+          </mat-card>
+
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-3 ">
           <mat-card>
-            <mat-card-content  >
+            <mat-card-content class="">
+
               <div class="tripdetail">
-              <h4 class="header"><b>Pickup completed</b></h4>
-              <div class="mt-2">
-                <h4 class="datetime  ">Jan 27, 2023 <br>
-                  11:43:22 AM</h4>
-              </div>
+
+                <h4 class="header  "><b>Trip active Courier
+                    has been assigned</b></h4>
+                <div class="mt-2">
+                  <h4 class="datetime ">{{tripDetails?.assignedAt | date}} <br>
+                    {{tripDetails?.assignedAt | date:'mediumTime'}}</h4>
+                </div>
               </div>
             </mat-card-content>
-            </mat-card>
-          </div>
+          </mat-card>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-3">
+          <mat-card>
+            <mat-card-content class=" ">
+              <div class="tripdetail">
+                <h4 class="header  "><b>In Progress</b></h4>
+                <div class="mt-2">
+                  <h4 class="datetime  ">{{tripDetails?.inprogressAt| date}} <br>
+                    {{tripDetails?.inprogressAt |date:'mediumTime'}}</h4>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-3 ">
+          <mat-card>
+            <mat-card-content>
+              <div class="tripdetail">
+                <h4 class="header"><b>Pickup completed</b></h4>
+                <div class="mt-2">
+                  <h4 class="datetime  ">{{tripDetails?.pickupCompletedAt| date}} <br>
+                    {{tripDetails?.pickupCompletedAt| date:'mediumTime'}}</h4>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
         </div>
       </div>
-      
-      
-      
-      
-      <div class="container-fluid bg-white p-0">
-      
-        <div class="container p-3">
-          <div class=" tasks mb-3">
-            <h6 class="" >Administrative tasks</h6>
-          </div>
-          <div class="row">
-            <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
-              <button mat-button mat-flat-button color="primary" class="tripbtn " >Cancel Trip</button>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
-              <button mat-button mat-flat-button color="primary" class="tripbtn  " >Force Complete Trip</button>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
-              <button mat-button mat-flat-button color="primary" class="tripbtn  " >View Courier Details</button>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
-              <button mat-button mat-flat-button color="primary"class=" tripbtn ">View Customer Details</button>
-            </div>
-      
-          </div>
+    </div>
+
+
+
+
+    <div class="container-fluid bg-white p-0">
+
+      <div class="container p-3">
+        <div class=" tasks mb-3">
+          <h6 class="">Administrative tasks</h6>
         </div>
-      
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
+            <button mat-button mat-flat-button color="primary" class="tripbtn ">Cancel Trip</button>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
+            <button mat-button mat-flat-button color="primary" class="tripbtn  ">Force Complete Trip</button>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
+            <button mat-button mat-flat-button color="primary" class="tripbtn  ">View Courier Details</button>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3 mb-3">
+            <button mat-button mat-flat-button color="primary" class=" tripbtn ">View Customer Details</button>
+          </div>
+
+        </div>
       </div>
+
+    </div>
 
   </div>
 </div>

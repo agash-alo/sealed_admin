@@ -15,7 +15,7 @@ export class SettingComponent implements OnInit {
   Notary = [
     // { id: '1', image: '../../assets/images/custm-nbb/settings-banner.png' },
     // { id: '2', image: '../../assets/images/custm-nbb/settings-banner.png' },
-    { id: '1', imgUrl: '../../assets/images/custm-nbb/upload.png' },
+    // { id: '1', imgUrl: '../../assets/images/custm-nbb/upload.png' },
   ];
   fileuploadstatus: boolean | undefined;
   selectedfile: any;
@@ -116,7 +116,7 @@ export class SettingComponent implements OnInit {
           } else {
             this.consumerCheck = true;
           }
-         
+
           console.log('this.bannerConsumerList', this.bannerConsumerList);
         }
         if (type == 'web') {
@@ -127,7 +127,7 @@ export class SettingComponent implements OnInit {
           } else {
             this.webCheck = true;
           }
-          
+
           console.log('this.bannerWebList', this.bannerWebList);
         }
         if (type == 'notary') {
@@ -137,8 +137,8 @@ export class SettingComponent implements OnInit {
           } else {
             this.notaryCheck = true;
           }
-          
-          console.log('this.bannerConsumerList', this.bannerConsumerList);
+
+          console.log('this.bannerNotaryList', this.bannerNotaryList);
         }
       })
       .catch((err) => {});
@@ -147,10 +147,12 @@ export class SettingComponent implements OnInit {
     let id = data[i]?._id;
     this.apiService.deleteBanner(id).subscribe((res) => {});
     this.getBannerList(type);
+    this.ngOnInit();
   }
   updateBanner(i: any, data: any, type: any) {
     let id = data[i]?._id;
     this.apiService.updateBanner(id).subscribe((res) => {});
     this.getBannerList(type);
+    this.ngOnInit();
   }
 }

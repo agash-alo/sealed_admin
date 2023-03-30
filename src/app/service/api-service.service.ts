@@ -77,13 +77,25 @@ export class ApiServiceService {
         });
     });
   }
-
   // getlistcustomerordercompletetrip
-
   getListCustomerCompleteTrip(customerId: any): Promise<any> {
     return new Promise((resolve, reject) => {
       let url = '';
       url = `orders?userId=${customerId}&orderStatus=delivered`;
+      this.auth
+        .guestAuthGetapi(url)
+        .then((resp: any) => {
+          resolve(resp);
+        })
+        .catch((err: any) => {
+          reject(err);
+        });
+    });
+  }
+  getListTrip(id: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let url = '';
+      url = `orders?_id=${id}`;
       this.auth
         .guestAuthGetapi(url)
         .then((resp: any) => {
@@ -125,12 +137,11 @@ export class ApiServiceService {
         });
     });
   }
-
   //getlistcourierorderactivetrip
-  getCourierOrderActiveTrip(courierId: any): Promise<any> {
+  getlistCourierActiveTrip(courierId: any): Promise<any> {
     return new Promise((resolve, reject) => {
       let url = '';
-      url = `orders?userId=${courierId}&orderStatus=new,orderAssigned,orderInProgress,orderPickUped`;
+      url = `orders?assignedToId=${courierId}&orderStatus=new,orderAssigned,orderInProgress,orderPickUped`;
       this.auth
         .guestAuthGetapi(url)
         .then((resp: any) => {
@@ -144,10 +155,10 @@ export class ApiServiceService {
 
   // getlistcourierordercompletetrip
 
-  getCourierOrderCompleteTrip(courierId: any): Promise<any> {
+  getlistCourierCompleteTrip(courierId: any): Promise<any> {
     return new Promise((resolve, reject) => {
       let url = '';
-      url = `orders?userId=${courierId}&orderStatus=delivered`;
+      url = `orders?assignedToId=${courierId}&orderStatus=delivered`;
       this.auth
         .guestAuthGetapi(url)
         .then((resp: any) => {
@@ -188,9 +199,9 @@ export class ApiServiceService {
     return this.auth.deleteGuestAuthApiData(url).pipe(map((res) => res));
   }
 
-  updateBanner(id:any){
+  updateBanner(id: any) {
     let url = `banner/${id}`;
-    return this.auth.putGuestAuthApiData(url,id).pipe(map((res) =>res));
+    return this.auth.putGuestAuthApiData(url, id).pipe(map((res) => res));
   }
   // getCourierdetailgetByAddress(courierId: any,type:any): Promise<any> {
   //   return new Promise((resolve, reject) => {
@@ -337,6 +348,8 @@ export class ApiServiceService {
     let url = `users/${userId}`;
     return this.auth.putGuestAuthApiData(url, verified).pipe(map((res) => res));
   }
+  //---------- getlistb2bcustomer -----
+
   createBanner(payload: any) {
     let url = `banner`;
     return this.auth.postGuestAuthApiData(url, payload).pipe(map((res) => res));
