@@ -66,7 +66,7 @@ export class ApiServiceService {
   getListCustomerActiveTrip(customerId: any): Promise<any> {
     return new Promise((resolve, reject) => {
       let url = '';
-      url = `orders?userId=${customerId}&orderStatus=new,orderAssigned,orderInProgress,orderPickUped`;
+      url = `orders?userId=${customerId}&orderStatus=orderAssigned,orderInProgress,orderPickUped`;
       this.auth
         .guestAuthGetapi(url)
         .then((resp: any) => {
@@ -141,7 +141,7 @@ export class ApiServiceService {
   getlistCourierActiveTrip(courierId: any): Promise<any> {
     return new Promise((resolve, reject) => {
       let url = '';
-      url = `orders?assignedToId=${courierId}&orderStatus=new,orderAssigned,orderInProgress,orderPickUped`;
+      url = `orders?assignedToId=${courierId}&orderStatus=orderAssigned,orderInProgress,orderPickUped`;
       this.auth
         .guestAuthGetapi(url)
         .then((resp: any) => {
@@ -390,5 +390,58 @@ export class ApiServiceService {
 
         catchError(this.handleError('err', []))
       );
+  }
+  // (): Promise<any> {
+  //   return new Promise((resolve, reject) => {
+  //     let url = '';
+  //     url = `demo?`;
+  //     this.auth
+  //       .guestAuthGetapi(url)
+  //       .then((resp: any) => {
+  //         resolve(resp);
+  //       })
+  //       .catch((err: any) => {
+  //         reject(err);
+  //       });
+  //   });
+  // }
+  getListDemoReq(limit?: any, offset?: any, value?: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let url = '';
+      if (value) {
+        url = `demo?limit=${limit}&offset=${offset}&value=${value}`;
+      } else {
+        url = `demo?limit=${limit}&offset=${offset}`;
+      }
+
+      this.auth
+        .guestAuthGetapi(url)
+        .then((resp: any) => {
+          resolve(resp);
+        })
+        .catch((err: any) => {
+          reject(err);
+        });
+    });
+  }
+
+  updatedemoList(userId: any, verified: any) {
+    let url = `demo/${userId}`;
+    return this.auth.putGuestAuthApiData(url, verified).pipe(map((res) => res));
+  }
+  // ---------dashboard page api-------
+  getconsumerActiveTrip(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let url = '';
+      url = `orders?type=consumer&orderStatus=new`;
+      this.auth
+        .guestAuthGetapi(url)
+        .then((resp: any) => {
+          resolve(resp);
+        })
+        .catch((err: any) => {
+          reject(err);
+        });
+    });
   }
 }

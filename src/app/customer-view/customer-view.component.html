@@ -65,20 +65,20 @@
                                   <div class="col-sm-4 col-md-6  col-lg-6 p-1">
                                     <div class="green p-1">
                                       <h6 style="font-size: 12px;"><b>FROM</b></h6>
-                                      <h6 style="font-size: 12px;">{{item?.pickupAddress[i]?.street}}
-                                        , {{item?.pickupAddress[i]?.city}} ,<br> {{item?.pickupAddress[i]?.state}} ,
-                                        {{item?.pickupAddress[i]?.country}} ,
-                                        {{item?.pickupAddress[i]?.postalCode}} .
+                                      <h6 style="font-size: 12px;" *ngFor="let addr of item?.pickupAddress; let j = index">{{addr?.street}}
+                                        , {{ addr?.city}} ,<br> {{ addr?.state}} ,
+                                        {{ addr?.country }} ,
+                                        {{ addr?.postalCode }} .
                                       </h6>
                                     </div>
                                   </div>
                                   <div class="col-sm-4 col-md-6  col-lg-6 p-1">
                                     <div class="green p-1">
-                                      <h6 style="font-size: 12px;"><b>TO </b></h6>
-                                      <h6 style="font-size: 12px;"> {{item?.dropAddress[i]?.street}} ,
-                                        {{item?.dropAddress[i]?.city}}
-                                        {{item?.dropAddress[i]?.state}} , {{item?.dropAddress[i]?.country}} ,
-                                        {{item?.dropAddress[i]?.postalCode}} .
+                                      <h6 style="font-size: 12px;"  ><b>TO </b></h6>
+                                      <h6 style="font-size: 12px;" *ngFor="let addr1 of item?.dropAddress; let k = index"> {{addr1?.street}} ,
+                                        {{ addr1?.city}}
+                                        {{ addr1?.state}} , {{ addr1?.country}} ,
+                                        {{ addr1?.postalCode}} .
 
 
                                       </h6>
@@ -134,22 +134,22 @@
                                 <div class="col-sm-4 col-md-6  col-lg-6 p-1">
                                   <div class="green p-1">
                                     <h6 style="font-size: 12px;"><b>FROM</b></h6>
-                                    <h6 style="font-size: 12px;">{{item?.pickupAddress[i]?.street}}
-                                      , {{item?.pickupAddress[i]?.city}} ,<br> {{item?.pickupAddress[i]?.state}} ,
-                                      {{item?.pickupAddress[i]?.country}} ,
-                                      {{item?.pickupAddress[i]?.postalCode}} .
-                                    </h6>
+                                      <h6 style="font-size: 12px;" *ngFor="let addr of item?.pickupAddress; let j = index">{{addr?.street}}
+                                        , {{ addr?.city}} ,<br> {{ addr?.state}} ,
+                                        {{ addr?.country }} ,
+                                        {{ addr?.postalCode }} .
+                                      </h6>
                                   </div>
                                 </div>
                                 <div class="col-sm-4 col-md-6  col-lg-6 p-1">
                                   <div class="green p-1">
                                     <h6 style="font-size: 12px;"><b>TO </b></h6>
-                                    <h6 style="font-size: 12px;"> {{item?.dropAddress[i]?.street}} ,
-                                      {{item?.dropAddress[i]?.city}}
-                                      {{item?.dropAddress[i]?.state}} , {{item?.dropAddress[i]?.country}} ,
-                                      {{item?.dropAddress[i]?.postalCode}} .
-
-
+                                    <h6 style="font-size: 12px;" *ngFor="let addr1 of item?.dropAddress; let k = index"> {{addr1?.street}} ,
+                                      {{ addr1?.city}}
+                                      {{ addr1?.state}} , {{ addr1?.country}} ,
+                                      {{ addr1?.postalCode}} .
+                                    
+                                    
                                     </h6>
                                   </div>
                                 </div>

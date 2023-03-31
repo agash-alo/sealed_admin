@@ -43,7 +43,7 @@ const MENUITEMS = [
     type: 'link',
     icon: 'search',
   },
-  
+
   // {
   //   state: 'delivery_trip',
   //   name: 'Delivery Trip',
@@ -62,7 +62,7 @@ const MENUITEMS = [
     type: 'link',
     icon: 'group',
   },
-{
+  {
     state: 'customers',
     name: ' Customers',
     type: 'link',
@@ -92,6 +92,12 @@ const MENUITEMS = [
   {
     state: 'setting',
     name: 'Settings',
+    type: 'link',
+    icon: 'settings',
+  },
+  {
+    state: 'demo-request',
+    name: 'demo-request',
     type: 'link',
     icon: 'settings',
   },

@@ -70,7 +70,7 @@ export class CustomerViewComponent implements OnInit {
   searchtrip(e: any) {
     this.value = e?.target?.value;
     this.loadActiveTrips();
-    this.loadCompleteTrips();
+    // this.loadCompleteTrips();
   }
 
   moredetails(i: any) {

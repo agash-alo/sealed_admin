@@ -54,7 +54,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 
-// import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
 
@@ -85,6 +85,7 @@ import { PayoutComponent } from './payout/payout.component';
 import { SettingComponent } from './setting/setting.component';
 import{ Ng2SearchPipeModule} from 'ng2-search-filter'
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { DemoRequestComponent } from './demo-request/demo-request.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -108,14 +109,13 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppBreadcrumbComponent,
     // HorizontalAppHeaderComponent,
     HorizontalAppSidebarComponent,
-    
+
     LoginComponent,
-    
+
     RegisterComponent,
     EnterOtpComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    
 
     PaymentsComponent,
 
@@ -136,8 +136,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     B2bCustomersComponent,
     PayoutComponent,
     SettingComponent,
-   
-    
+    DemoRequestComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -156,7 +156,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HttpClientModule,
 
     Ng2SearchPipeModule,
-    
+
     CollapseModule.forRoot(),
     NgMultiSelectDropDownModule.forRoot(),
     NgxDaterangepickerMd.forRoot(),

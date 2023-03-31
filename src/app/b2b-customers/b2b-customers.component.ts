@@ -56,6 +56,8 @@ export class B2bCustomersComponent implements OnInit {
   }
 
   updateVerifyStatus(e) {
+
+    
     let payload = {
       isVerified: 'true',
       name: e.name,

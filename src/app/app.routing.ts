@@ -11,7 +11,7 @@ import { CouriersComponent } from './couriers/couriers.component';
 import { CustomerViewComponent } from './customer-view/customer-view.component';
 import { CustomersComponent } from './customers/customers.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { DemoMaterialModule } from './demo-material-module';
 import { DeliveryTripComponent } from './delivery-trip/delivery-trip.component';
 
 
@@ -49,6 +49,7 @@ import { TripDetailsComponent } from './trip-details/trip-details.component';
 // import { TypeOfPrizeComponent } from './type-of-prize/type-of-prize.component';
 
  import { AuthGuardServiceService } from './service/auth-guard-service.service'
+import { DemoRequestComponent } from './demo-request/demo-request.component';
 
 
 export const AppRoutes: Routes = [
@@ -61,7 +62,7 @@ export const AppRoutes: Routes = [
         redirectTo: '/login',
         pathMatch: 'full',
       },
-        {
+      {
         path: 'dashboard',
         component: DashboardComponent,
 
@@ -94,7 +95,10 @@ export const AppRoutes: Routes = [
 
         data: {
           title: 'Delivery_trip',
-          urls: [{ title: 'Dashboard', url: '/   ' }, { title: 'delivery_trip' }],
+          urls: [
+            { title: 'Dashboard', url: '/   ' },
+            { title: 'delivery_trip' },
+          ],
         },
       },
       {
@@ -103,7 +107,10 @@ export const AppRoutes: Routes = [
 
         data: {
           title: 'Stamp_Document',
-          urls: [{ title: 'Dashboard', url: '/   ' }, { title: 'stamp_document' }],
+          urls: [
+            { title: 'Dashboard', url: '/   ' },
+            { title: 'stamp_document' },
+          ],
         },
       },
       {
@@ -121,7 +128,10 @@ export const AppRoutes: Routes = [
 
         data: {
           title: 'Courier-view',
-          urls: [{ title: 'Dashboard', url: '/   ' }, { title: 'courier-view' }],
+          urls: [
+            { title: 'Dashboard', url: '/   ' },
+            { title: 'courier-view' },
+          ],
         },
       },
       {
@@ -130,97 +140,100 @@ export const AppRoutes: Routes = [
 
         data: {
           title: 'Courier-payout',
-          urls: [{ title: 'Dashboard', url: '/   ' }, { title: 'courier-payout' }],
+          urls: [
+            { title: 'Dashboard', url: '/   ' },
+            { title: 'courier-payout' },
+          ],
         },
       },
       {
-        path:'courier-payout-view',
-        component:CourierPayoutViewComponent,
+        path: 'courier-payout-view',
+        component: CourierPayoutViewComponent,
 
-        data:{
-          title:'Courier-payout-view',
-          urls:[{ title: 'Dashboard', url: '/ '},{ title: 'courier-payout-view'}],
+        data: {
+          title: 'Courier-payout-view',
+          urls: [
+            { title: 'Dashboard', url: '/ ' },
+            { title: 'courier-payout-view' },
+          ],
         },
       },
       {
-        path:'courier-generate-payout',
-        component:CourierGeneratePayoutComponent,
+        path: 'courier-generate-payout',
+        component: CourierGeneratePayoutComponent,
 
-        data:{
-          title:'Courier-generate-payout',
-          urls:[{ title: 'Dashboard', url: '/ '},{ title: 'courier-generate-payout'}],
+        data: {
+          title: 'Courier-generate-payout',
+          urls: [
+            { title: 'Dashboard', url: '/ ' },
+            { title: 'courier-generate-payout' },
+          ],
         },
       },
       {
-        path:'customers',
-        component:CustomersComponent,
+        path: 'customers',
+        component: CustomersComponent,
 
-        data:{
-          title:'Customers',
-          urls:[{ title: 'Dashboard', url: '/ '},{ title: 'customers'}],
-        },
-      },
-       {
-        path:'customer-view',
-        component:CustomerViewComponent,
-
-        data:{
-          title:'Customer-view',
-          urls:[{ title: 'Dashboard', url: '/ '},{ title: 'customer-view'}],
+        data: {
+          title: 'Customers',
+          urls: [{ title: 'Dashboard', url: '/ ' }, { title: 'customers' }],
         },
       },
       {
-        path:'b2b-trips',
-        component:B2bTripsComponent,
+        path: 'customer-view',
+        component: CustomerViewComponent,
 
-        data:{
-          title:'B2B-trips',
-          urls:[{ title: 'Dashboard', url: '/ '},{ title: 'b2b-trips'}],
+        data: {
+          title: 'Customer-view',
+          urls: [{ title: 'Dashboard', url: '/ ' }, { title: 'customer-view' }],
         },
       },
       {
-        path:'b2b-customers',
-        component:B2bCustomersComponent,
+        path: 'b2b-trips',
+        component: B2bTripsComponent,
 
-        data:{
-          title:'B2B-customers',
-          urls:[{ title: 'Dashboard', url: '/ '},{ title: 'b2b-customers'}],
+        data: {
+          title: 'B2B-trips',
+          urls: [{ title: 'Dashboard', url: '/ ' }, { title: 'b2b-trips' }],
         },
       },
       {
-        path:'payout',
-        component:PayoutComponent,
+        path: 'b2b-customers',
+        component: B2bCustomersComponent,
 
-        data:{
-          title:'Payout',
-          urls:[{ title: 'Dashboard', url: '/ '},{ title: 'payout'}],
+        data: {
+          title: 'B2B-customers',
+          urls: [{ title: 'Dashboard', url: '/ ' }, { title: 'b2b-customers' }],
         },
       },
       {
-        path:'setting',
-        component:SettingComponent,
+        path: 'payout',
+        component: PayoutComponent,
 
-        data:{
-          title:'Settings',
-          urls:[{ title: 'Dashboard', url: '/ '},{ title: 'setting'}],
+        data: {
+          title: 'Payout',
+          urls: [{ title: 'Dashboard', url: '/ ' }, { title: 'payout' }],
+        },
+      },
+      {
+        path: 'setting',
+        component: SettingComponent,
+
+        data: {
+          title: 'Settings',
+          urls: [{ title: 'Dashboard', url: '/ ' }, { title: 'setting' }],
+        },
+      },
+      {
+        path: 'demo-request',
+        component: DemoRequestComponent,
+
+        data: {
+          title: 'demo-Request',
+          urls: [{ title: 'Dashboard', url: '/ ' }, { title: 'demo-request' }],
         },
       },
 
-
-
-      
-
-
-
-      
-      
-      
-
-      
-
-      
-      
-      
       {
         path: 'payments',
         component: PaymentsComponent,
@@ -234,8 +247,6 @@ export const AppRoutes: Routes = [
         },
       },
 
-     
-
       {
         path: 'Reports',
         component: OrderDetailsComponent,
@@ -246,7 +257,6 @@ export const AppRoutes: Routes = [
         },
       },
 
-      
       // {
       //     path: 'addUser',
       //     component: AddUserComponent,
@@ -259,7 +269,7 @@ export const AppRoutes: Routes = [
       //         ]
       //     }
       // },
-      
+
       // {
       //     path: 'drawDetails',
       //     component: DrawDetailsComponent,
@@ -360,8 +370,7 @@ export const AppRoutes: Routes = [
       title: 'Forgot password',
     },
   },
-  
-  
+
   {
     path: 'resetPassword',
     component: ResetPasswordComponent,

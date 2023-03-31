@@ -1,4 +1,4 @@
-<div class="modal-header">
+<!-- <div class="modal-header">
     <h4 class="modal-title">Alert</h4>
       <button type="button" class="close" aria-label="Close" (click)="dismiss()">
         <span aria-hidden="true">&times;</span>
@@ -9,4 +9,15 @@
     </div>
     <div class="modal-footer">
       <button type="button" class="btn nbb-btn-color" (click)="accept()" style="color: #fff;"><i class="fa-solid fa-circle-check"></i> Ok</button>
+    </div> -->
+    <div *ngIf="status == 'Update'">
+      <mat-dialog-content>
+        <p>
+          {{message}} {{status}} {{msg}}
+        </p>
+      </mat-dialog-content>
+      <mat-dialog-actions align="center">
+        <button mat-raised-button color="primary" tabindex="1" (click)="onNoClick()">{{confirmButtonText}}</button>
+        <button mat-raised-button mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
+      </mat-dialog-actions>
     </div>

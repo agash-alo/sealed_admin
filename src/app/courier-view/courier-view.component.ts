@@ -148,16 +148,9 @@ export class CourierViewComponent implements OnInit {
     this.ngOnInit();
   }
 
-  // viewLoadActiveTrips() {
-  //   this.viewshow = true;
-  // }
-  // viewLoadCompleteTrips() {
-  //   this.viewshowcomplete = true;
-  // }
-
   moredetails(i: any) {
-    console.log('wel');
-    this.router.navigate(['/trip_details, { id: i?._id }']);
+    // console.log('ooooooooooooo', i);
+    this.router.navigate(['/trip_details', { id: i?._id }]);
   }
 
   loadActiveTrips() {

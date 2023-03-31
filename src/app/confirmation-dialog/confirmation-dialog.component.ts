@@ -1,28 +1,31 @@
-import { Component,  Input, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component,  Inject,  Input, OnInit } from '@angular/core';
+import { MatDialogRef ,MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-confirmation-dialog',
   templateUrl: './confirmation-dialog.component.html',
-  styleUrls: ['./confirmation-dialog.component.scss']
+  styleUrls: ['./confirmation-dialog.component.scss'],
 })
 export class ConfirmationDialogComponent implements OnInit {
+  message: string = 'Are you sure You Want to ';
+  msg: string = 'this Record?';
+  confirmButtonText = 'Yes';
+  cancelButtonText = 'Cancel';
+  showmsg: any;
+  _api: any;
 
-   constructor(private activeModal: NgbActiveModal) { }
+  //   @Output() ParentComponet:EventEmitter<any> = new EventEmitter()
+  status: any;
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public _dialogRef: MatDialogRef<ConfirmationDialogComponent>
+  ) {}
 
   ngOnInit(): void {
+    this.status = this.data.status;
+    console.log(this.status);
   }
 
-  public decline() {
-    this.activeModal.close(false);
+  onNoClick(): void {
+    this._dialogRef.close(true);
   }
-
-  public accept() {
-    this.activeModal.close(true);
-  }
-
-  public dismiss() {
-    this.activeModal.dismiss();
-  }
-
-
 }

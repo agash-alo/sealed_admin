@@ -120,7 +120,7 @@ export class SettingComponent implements OnInit {
           console.log('this.bannerConsumerList', this.bannerConsumerList);
         }
         if (type == 'web') {
-          console.log(this.bannerWebList);
+          
           this.bannerWebList = res?.data?.data ? res.data.data : [];
           if (this.bannerWebList?.length >= 3) {
             this.webCheck = false;
@@ -147,7 +147,7 @@ export class SettingComponent implements OnInit {
     let id = data[i]?._id;
     this.apiService.deleteBanner(id).subscribe((res) => {});
     this.getBannerList(type);
-    this.ngOnInit();
+    // this.ngOnInit();
   }
   updateBanner(i: any, data: any, type: any) {
     let id = data[i]?._id;
